@@ -22,9 +22,11 @@ public class ArrayList {
         return false;
 
     }
+        
 
-    public void ensureCapacity(int n) {
-        if (n <= data.length) {
+
+    void ensureCapacity(int n) {
+        if ( n <= data.length) {
             return;
         }
         String[] tab2 = new String[2 * data.length];
@@ -59,7 +61,7 @@ public class ArrayList {
     }
 
     String remove(int index){
-        String temp = "";
+        String temp ="";
         while (index++>=nb){
             temp = this.data[index];
             this.data[index]=this.data[index+1];
