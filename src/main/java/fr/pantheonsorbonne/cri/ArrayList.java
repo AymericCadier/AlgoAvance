@@ -5,39 +5,38 @@ public class ArrayList {
     String[] data;
     int nb;
 
-
     public ArrayList() {
         this.data = new String[4];
         this.nb = 0;
     }
 
-    void ajout(String s) {
+    public void ajout(String s) {
         ensureCapacity(this.nb + 1);
         this.data[nb] = s;
         nb++;
     }
 
-    boolean add(String element){
+    public boolean add(String element) {
         ensureCapacity(this.nb + 1);
         this.data[nb] = element;
         nb++;
         return true;
     }
         
-    
+    }
 
     void ensureCapacity(int n) {
         if ( n <= data.length) {
             return;
         }
-        String[] tab2 = new String[2* data.length];
-        for (int i = 0; i < data.length; i ++) {
+        String[] tab2 = new String[2 * data.length];
+        for (int i = 0; i < data.length; i++) {
             tab2[i] = data[i];
         }
         this.data = tab2;
     }
 
-    String  get(int i ) {
+    public String get(int i) {
 
         return this.data[i];
     }
@@ -46,13 +45,13 @@ public class ArrayList {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (String i : data) {
-            if(i != null)
-            sb.append(i);
+            if (i != null)
+                sb.append(i);
         }
         return sb.toString();
     }
 
-    boolean contains(String s) {
+    public boolean contains(String s) {
         for (String i : data) {
             if (i.equals(s)) {
                 return true;
@@ -62,7 +61,6 @@ public class ArrayList {
     }
 
     String remove(int index){
-        String temp="";
         while (index++>=nb){
             temp = this.data[index];
             this.data[index]=this.data[index+1];
@@ -70,15 +68,16 @@ public class ArrayList {
         return temp;
     }
 
-    String set(int index, String element){
-        return this.data[index]=element;
+    public String set(int index, String element) {
+        return this.data[index] = element;
     }
-    public boolean isEmpty(){
-        
+
+    public boolean isEmpty() {
+
         return this.nb == 0;
     }
 
-    int size(){
+    public int size() {
         return this.nb;
     }
 
