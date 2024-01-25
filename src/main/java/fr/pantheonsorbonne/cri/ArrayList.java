@@ -10,19 +10,17 @@ public class ArrayList {
         this.nb = 0;
     }
 
-    public void ajout(String s) {
+    boolean ajout(String s) {
         ensureCapacity(this.nb + 1);
         this.data[nb] = s;
-        nb++;
-    }
+        for(String i : this.data){
+            nb++;
+            if(i==s){
+                return true;
+            }
+        } return false;
 
-    public boolean add(String element) {
-        ensureCapacity(this.nb + 1);
-        this.data[nb] = element;
-        nb++;
-        return true;
     }
-        
 
 
     void ensureCapacity(int n) {
@@ -36,10 +34,13 @@ public class ArrayList {
         this.data = tab2;
     }
 
-    public String get(int i) {
-
-        return this.data[i];
+    String  get(int i ) {
+        if(i>=0 && i<data.length){
+            return this.data[i];
+        } 
+        return "erreur";
     }
+
 
     @Override
     public String toString() {
@@ -85,21 +86,12 @@ public class ArrayList {
     public static void main(String[] args) {
         ArrayList alist = new ArrayList();
         System.out.println(alist.toString());
-        alist.ajout("test1");
+        alist.ajout("");
         System.out.println(alist.toString());
-        alist.ajout("test2");
-        alist.ajout("test3");
-        alist.ajout("test4");
-        alist.ajout("test5");
-        alist.ajout("test6");
-        alist.ajout("test7");
-        alist.ajout("test8");
-        alist.ajout("test9");
-        alist.ajout("test10");
-        alist.ajout("test11");
-        alist.ajout("test12");
+        for (int i = 0; i < 12; i++) {
+            alist.ajout("test" + i);
+        }
         System.out.println(alist.toString());
         System.out.println(alist.get(0));
-
     }
 }
