@@ -10,7 +10,7 @@ public class ArrayList {
         this.nb = 0;
     }
 
-    boolean ajout(String s) {
+    boolean add(String s) {
         ensureCapacity(this.nb + 1);
         this.data[nb] = s;
         for (String i : this.data) {
@@ -114,12 +114,13 @@ public class ArrayList {
     public static void main(String[] args) {
         ArrayList alist = new ArrayList();
         System.out.println(alist.toString());
-        alist.ajout("");
+        alist.add("");
         System.out.println(alist.toString());
         for (int i = 0; i < 12; i++) {
-            alist.ajout("test" + i);
+            alist.add("test" + i);
         }
         System.out.println(alist.toString());
         System.out.println(alist.get(0));
+
     }
 }
