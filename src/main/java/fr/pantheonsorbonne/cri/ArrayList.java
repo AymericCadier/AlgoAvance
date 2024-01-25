@@ -23,7 +23,7 @@ public class ArrayList {
         return true;
     }
         
-    }
+
 
     void ensureCapacity(int n) {
         if ( n <= data.length) {
@@ -61,6 +61,7 @@ public class ArrayList {
     }
 
     String remove(int index){
+        String temp ="";
         while (index++>=nb){
             temp = this.data[index];
             this.data[index]=this.data[index+1];
