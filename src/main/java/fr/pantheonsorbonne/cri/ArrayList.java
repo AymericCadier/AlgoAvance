@@ -23,31 +23,34 @@ public class ArrayList {
 
     }
 
-    int indexOf(String element){
-        for(int i=0;i<=data.length;i++){
-            if(data[i].equals(element)){
+    int indexOf(String element) {
+        for (int i = 0; i <= data.length; i++) {
+            if (data[i].equals(element)) {
                 return i;
             }
-            
+
         }
         return -1;
-        
+
     }
 
     void add(int index, String elem) {
         String[] tab2 = new String[data.length + 1];
-        if (data[index] == null) {
-            data[index] = elem;
+        ensureCapacity(nb + 1);
+        this.nb++;
+        if (this.data[index] == null) {
+            this.data[index] = elem;
+            return;
         } else {
             for (int i = 0; i < index; i++) {
-                tab2[i] = data[i];
+                tab2[i] = this.data[i];
             }
             tab2[index] = elem;
-            for (int i = index; i < data.length + 1; i++) {
-                tab2[i + 1] = data[i];
+            for (int i = index; i < data.length; i++) {
+                tab2[i + 1] = this.data[i];
             }
+            this.data = tab2;
         }
-        this.data = tab2;
     }
 
     void ensureCapacity(int n) {
@@ -109,8 +112,6 @@ public class ArrayList {
         return this.nb;
     }
 
-
-
     public static void main(String[] args) {
         ArrayList alist = new ArrayList();
         System.out.println(alist.toString());
@@ -121,6 +122,9 @@ public class ArrayList {
         }
         System.out.println(alist.toString());
         System.out.println(alist.get(0));
+
+        alist.add(3, "ICI");
+        System.out.println(alist.toString());
 
     }
 }
