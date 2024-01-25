@@ -9,8 +9,7 @@ public class ArrayList {
         this.data = new String[4];
         this.nb = 0;
     }
-
-    boolean ajout(String s) {
+    
     boolean ajout(String s) {
         ensureCapacity(this.nb + 1);
         this.data[nb] = s;
@@ -20,13 +19,6 @@ public class ArrayList {
                 return true;
             }
         } return false;
-        for (String i : this.data) {
-            nb++;
-            if (i == s) {
-                return true;
-            }
-        }
-        return false;
 
     }
 
