@@ -10,16 +10,17 @@ public class ArrayList {
         this.nb = 0;
     }
 
-    boolean add(String s) {
+    boolean ajout(String s) {
         ensureCapacity(this.nb + 1);
+        if(s!=null){
         this.data[nb] = s;
         for (String i : this.data) {
             nb++;
             if (i == s) {
                 return true;
             }
-        }
-        return false;
+        } }return false; 
+
 
     }
 
