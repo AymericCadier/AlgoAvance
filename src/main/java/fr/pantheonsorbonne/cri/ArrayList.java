@@ -22,6 +22,17 @@ public class ArrayList {
 
     }
 
+    int indexOf(String element){
+        for(int i=0;i<=data.length;i++){
+            if(data[i].equals(element)){
+                return i;
+            }
+            
+        }
+        return -1;
+        
+    }
+
 
     void ensureCapacity(int n) {
         if ( n <= data.length) {
@@ -82,6 +93,8 @@ public class ArrayList {
     public int size() {
         return this.nb;
     }
+
+
 
     public static void main(String[] args) {
         ArrayList alist = new ArrayList();
