@@ -9,22 +9,38 @@ public class ArrayList {
         this.data = new String[4];
         this.nb = 0;
     }
-    
+
     boolean ajout(String s) {
         ensureCapacity(this.nb + 1);
         this.data[nb] = s;
-        for(String i : this.data){
+        for (String i : this.data) {
             nb++;
-            if(i==s){
+            if (i == s) {
                 return true;
             }
-        } return false;
+        }
+        return false;
 
     }
 
+    void add(int index, String elem) {
+        String[] tab2 = new String[data.length + 1];
+        if (data[index] == null) {
+            data[index] = elem;
+        } else {
+            for (int i = 0; i < index; i++) {
+                tab2[i] = data[i];
+            }
+            tab2[index] = elem;
+            for (int i = index; i < data.length + 1; i++) {
+                tab2[i + 1] = data[i];
+            }
+        }
+        this.data = tab2;
+    }
 
     void ensureCapacity(int n) {
-        if ( n <= data.length) {
+        if (n <= data.length) {
             return;
         }
         String[] tab2 = new String[2 * data.length];
@@ -34,13 +50,12 @@ public class ArrayList {
         this.data = tab2;
     }
 
-    String  get(int i ) {
-        if(i>=0 && i<data.length){
+    String get(int i) {
+        if (i >= 0 && i < data.length) {
             return this.data[i];
-        } 
+        }
         return "erreur";
     }
-
 
     @Override
     public String toString() {
@@ -61,11 +76,11 @@ public class ArrayList {
         return false;
     }
 
-    String remove(int index){
-        String temp ="";
-        while (index++>=nb){
+    String remove(int index) {
+        String temp = "";
+        while (index++ >= nb) {
             temp = this.data[index];
-            this.data[index]=this.data[index+1];
+            this.data[index] = this.data[index + 1];
         }
         return temp;
     }
