@@ -116,10 +116,10 @@ public class ArrayList {
     public static void main(String[] args) {
         ArrayList alist = new ArrayList();
         System.out.println(alist.toString());
-        alist.add("");
+        alist.ajout("");
         System.out.println(alist.toString());
         for (int i = 0; i < 12; i++) {
-            alist.add("test" + i);
+            alist.ajout("test" + i);
         }
         System.out.println(alist.toString());
         System.out.println(alist.get(0));
