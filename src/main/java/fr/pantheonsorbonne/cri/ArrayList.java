@@ -18,7 +18,12 @@ public class ArrayList {
     }
 
     boolean add(String element){
-        if
+        ensureCapacity(this.nb + 1);
+        this.data[nb] = element;
+        nb++;
+        return true;
+    }
+        
     }
 
     void ensureCapacity(int n) {
