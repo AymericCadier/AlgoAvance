@@ -14,9 +14,9 @@ public class ArrayList {
         ensureCapacity(this.nb + 1);
         if(s!=null){
         this.data[nb] = s;
-        for(String i : this.data){
+        for (String i : this.data) {
             nb++;
-            if(i==s){
+            if (i == s) {
                 return true;
             }
         } }return false; 
@@ -24,9 +24,35 @@ public class ArrayList {
 
     }
 
+    int indexOf(String element){
+        for(int i=0;i<=data.length;i++){
+            if(data[i].equals(element)){
+                return i;
+            }
+            
+        }
+        return -1;
+        
+    }
+
+    void add(int index, String elem) {
+        String[] tab2 = new String[data.length + 1];
+        if (data[index] == null) {
+            data[index] = elem;
+        } else {
+            for (int i = 0; i < index; i++) {
+                tab2[i] = data[i];
+            }
+            tab2[index] = elem;
+            for (int i = index; i < data.length + 1; i++) {
+                tab2[i + 1] = data[i];
+            }
+        }
+        this.data = tab2;
+    }
 
     void ensureCapacity(int n) {
-        if ( n <= data.length) {
+        if (n <= data.length) {
             return;
         }
         String[] tab2 = new String[2 * data.length];
@@ -36,13 +62,12 @@ public class ArrayList {
         this.data = tab2;
     }
 
-    String  get(int i ) {
-        if(i>=0 && i<data.length){
+    String get(int i) {
+        if (i >= 0 && i < data.length) {
             return this.data[i];
-        } 
+        }
         return "erreur";
     }
-
 
     @Override
     public String toString() {
@@ -63,11 +88,11 @@ public class ArrayList {
         return false;
     }
 
-    String remove(int index){
-        String temp ="";
-        while (index++>=nb){
+    String remove(int index) {
+        String temp = "";
+        while (index++ >= nb) {
             temp = this.data[index];
-            this.data[index]=this.data[index+1];
+            this.data[index] = this.data[index + 1];
         }
         return temp;
     }
@@ -85,15 +110,18 @@ public class ArrayList {
         return this.nb;
     }
 
+
+
     public static void main(String[] args) {
         ArrayList alist = new ArrayList();
         System.out.println(alist.toString());
-        alist.ajout("");
+        alist.add("");
         System.out.println(alist.toString());
         for (int i = 0; i < 12; i++) {
-            alist.ajout("test" + i);
+            alist.add("test" + i);
         }
         System.out.println(alist.toString());
         System.out.println(alist.get(0));
+
     }
 }
