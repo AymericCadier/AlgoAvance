@@ -1,4 +1,6 @@
 package fr.pantheonsorbonne.cri;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class ArrayList {
 
@@ -109,6 +111,8 @@ public class ArrayList {
         return this.nb;
     }
 
+    
+
 
 
     public static void main(String[] args) {
@@ -122,4 +126,27 @@ public class ArrayList {
         System.out.println(alist.toString());
         System.out.println(alist.get(0));
     }
+
+    public class StringArrayListIterator implements Iterator<String> {
+    int currentIndex = 0; 
+
+    @Override
+    public boolean hasNext() {
+        
+        return currentIndex < nb && data[currentIndex] != null;
+    }
+
+    @Override
+    public String next() {
+        if (!hasNext()) {
+            throw new NoSuchElementException();
+        }
+        return data[currentIndex++];
+    }
 }
+
+
+}
+
+
+    
