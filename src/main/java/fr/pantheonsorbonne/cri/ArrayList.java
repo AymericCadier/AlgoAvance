@@ -11,6 +11,7 @@ public class ArrayList {
     }
 
     boolean ajout(String s) {
+    boolean ajout(String s) {
         ensureCapacity(this.nb + 1);
         this.data[nb] = s;
         for(String i : this.data){
@@ -19,6 +20,13 @@ public class ArrayList {
                 return true;
             }
         } return false;
+        for (String i : this.data) {
+            nb++;
+            if (i == s) {
+                return true;
+            }
+        }
+        return false;
 
     }
 
