@@ -23,6 +23,17 @@ public class ArrayList {
 
     }
 
+    int indexOf(String element){
+        for(int i=0;i<=data.length;i++){
+            if(data[i].equals(element)){
+                return i;
+            }
+            
+        }
+        return -1;
+        
+    }
+
     void add(int index, String elem) {
         String[] tab2 = new String[data.length + 1];
         if (data[index] == null) {
@@ -97,6 +108,8 @@ public class ArrayList {
     public int size() {
         return this.nb;
     }
+
+
 
     public static void main(String[] args) {
         ArrayList alist = new ArrayList();
