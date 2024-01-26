@@ -12,6 +12,13 @@ public class StringLinkedList {
         return true;
     }
 
+
+
+
+
+
+
+
     public void addFirst(String s) {
         Noeud first = new Noeud(s, ????); // ???? => faut le lier avec le noeud début 
         this.debut = first;
@@ -22,6 +29,6 @@ public class StringLinkedList {
     }
 
     public void remove() {
-        
+
     }
 }

@@ -17,22 +17,22 @@ public class ArrayListTest {
     void TesttoString(){
         ArrayList alist = new ArrayList();
         assertEquals(alist.toString(), "");
-        alist.ajout("a");
+        alist.add("a");
         assertEquals(alist.toString(), "a");        
     }
 
     @Test
-    void TestAjout(){
+    void Testadd(){
         ArrayList alist = new ArrayList();
-        assertFalse(alist.ajout(null));
-        assertTrue(alist.ajout("b"));
+        assertFalse(alist.add(null));
+        assertTrue(alist.add("b"));
         assertTrue(alist.contains("b"));
-        assertTrue(alist.ajout("c"));
-        assertTrue(alist.ajout("d"));
-        assertTrue(alist.ajout("e"));
-        assertTrue(alist.ajout("f"));
-        assertTrue(alist.ajout("g"));
-        assertTrue(alist.ajout("h"));
+        assertTrue(alist.add("c"));
+        assertTrue(alist.add("d"));
+        assertTrue(alist.add("e"));
+        assertTrue(alist.add("f"));
+        assertTrue(alist.add("g"));
+        assertTrue(alist.add("h"));
         assertTrue(alist.size()>4);
         
     }
@@ -40,9 +40,9 @@ public class ArrayListTest {
     @Test
     void TestGet(){
         ArrayList alist = new ArrayList();
-        alist.ajout("a");
-        alist.ajout("b");
-        alist.ajout("c");
+        alist.add("a");
+        alist.add("b");
+        alist.add("c");
         assertEquals(alist.get(1), "b");
         assertEquals(alist.get(8),"erreur");
         assertEquals(alist.get(-2),"erreur");
@@ -51,9 +51,9 @@ public class ArrayListTest {
     @Test
     void TestindexOf(){
         ArrayList alist = new ArrayList();
-        alist.ajout("a");
-        alist.ajout("b");
-        alist.ajout("ab");
+        alist.add("a");
+        alist.add("b");
+        alist.add("ab");
         assertEquals(alist.indexOf("b"),1);
         //assertEquals(alist.indexOf("c"),-1);
     }
@@ -62,16 +62,16 @@ public class ArrayListTest {
     void TestisEmpty(){
         ArrayList alist = new ArrayList();
         assertTrue(alist.isEmpty());
-        alist.ajout("a");
+        alist.add("a");
         assertFalse(alist.isEmpty());
     }
 
     @Test
     void Testremove(){
         ArrayList alist = new ArrayList();
-        alist.ajout("a");
-        alist.ajout("b");
-        alist.ajout("c");
+        alist.add("a");
+        alist.add("b");
+        alist.add("c");
         String temp = alist.toString();
         assertNotEquals(alist.remove(1),temp);
         assertFalse(alist.contains("b"));
@@ -83,16 +83,16 @@ public class ArrayListTest {
     @Test
     void Testsize(){
         ArrayList alist = new ArrayList();
-        alist.ajout("a");
-        alist.ajout("b");
+        alist.add("a");
+        alist.add("b");
         assertEquals(alist.size(),2);
     }
 
     @Test 
     void Testset(){
         ArrayList alist = new ArrayList();
-        alist.ajout("a");
-        alist.ajout("b");
+        alist.add("a");
+        alist.add("b");
         assertEquals(alist.set(1,"c"),"b");
         assertEquals(alist.toString(),"ac");
     }
