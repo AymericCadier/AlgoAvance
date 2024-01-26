@@ -29,14 +29,31 @@ public class StringLinkedList {
         this.debut = first;
     }
 
-    public String toString() {
-        String s = "";
+    public String get(int index) {
+        Noeud courant = this.debut;
+        int i = 0;
+        while (courant.getSuivant() != null) {
+            if (i == index) {
+                return courant.getData();
+            }
+            courant = courant.getSuivant();
+            i++;
+        }
+        return "erreur";
+    }
+    void clear() {
+        this.debut = null;
+    }
+
+    boolean Contains(Object O){
         Noeud courant = this.debut;
         while (courant.getSuivant() != null) {
-            s += courant.getData();
+            if (courant.getData() == O) {
+                return true;
+            }
             courant = courant.getSuivant();
         }
-        return s;
+        return false;
     }
     /*
      * public void affiche() {
