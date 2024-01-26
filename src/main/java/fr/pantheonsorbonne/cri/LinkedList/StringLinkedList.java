@@ -11,16 +11,17 @@ public class StringLinkedList {
 
     public boolean add(String s) {
         Noeud courant = this.debut;
-        if (courant.getData()==null){
+        if (courant.getData() == null) {
             courant.setData(s);
             courant.setSuivant(null);
         } else {
-        while (courant.getSuivant() != null) {
-            courant = courant.getSuivant();
+            while (courant.getSuivant() != null) {
+                courant = courant.getSuivant();
+            }
+            Noeud noeud = new Noeud(s, null);
+            courant.setSuivant(noeud);
         }
-        Noeud noeud = new Noeud(s,null);
-        courant.setSuivant(noeud);}
-        return true; 
+        return true;
     }
 
     public void addFirst(String s) {
@@ -28,36 +29,53 @@ public class StringLinkedList {
         this.debut = first;
     }
 
-    
-/* 
-    public void affiche() {
+    public String get(int index) {
         Noeud courant = this.debut;
+        int i = 0;
+        while (courant.getSuivant() != null) {
+            if (i == index) {
+                return courant.getData();
+            }
+            courant = courant.getSuivant();
+            i++;
+        }
+        return "erreur";
     }
-*/
-
-/* 
-    public void add(int index, String s) {
-
+    void clear() {
+        this.debut = null;
     }
 
-    public void remove() {
-
-    }
-*/
-    public String toString(){
-        String s = "";
+    boolean Contains(Object O){
         Noeud courant = this.debut;
         while (courant.getSuivant() != null) {
-            s += courant.getData() + " ";
+            if (courant.getData() == O) {
+                return true;
+            }
             courant = courant.getSuivant();
         }
-        return s;
+        return false;
     }
+    /*
+     * public void affiche() {
+     * Noeud courant = this.debut;
+     * }
+     */
+
+    /*
+     * public void add(int index, String s) {
+     * 
+     * }
+     * 
+     * public void remove() {
+     * 
+     * }
+     */
     public static void main(String[] args) {
         StringLinkedList link = new StringLinkedList();
         link.add("test");
         link.add("test1");
         link.add("test2");
+        System.out.println(link.toString());
         link.addFirst("first");
         System.out.println(link.toString());
     }
