@@ -11,16 +11,17 @@ public class StringLinkedList {
 
     public boolean add(String s) {
         Noeud courant = this.debut;
-        if (courant.getData()==null){
+        if (courant.getData() == null) {
             courant.setData(s);
             courant.setSuivant(null);
         } else {
-        while (courant.getSuivant() != null) {
-            courant = courant.getSuivant();
+            while (courant.getSuivant() != null) {
+                courant = courant.getSuivant();
+            }
+            Noeud noeud = new Noeud(s, null);
+            courant.setSuivant(noeud);
         }
-        Noeud noeud = new Noeud(s,null);
-        courant.setSuivant(noeud);}
-        return true; 
+        return true;
     }
 
     public void addFirst(String s) {
@@ -28,7 +29,7 @@ public class StringLinkedList {
         this.debut = first;
     }
 
-    public String toString(){
+    public String toString() {
         String s = "";
         Noeud courant = this.debut;
         while (courant.getSuivant() != null) {
@@ -37,30 +38,21 @@ public class StringLinkedList {
         }
         return s;
     }
-/* 
-    public void affiche() {
-        Noeud courant = this.debut;
-    }
-*/
+    /*
+     * public void affiche() {
+     * Noeud courant = this.debut;
+     * }
+     */
 
-/* 
-    public void add(int index, String s) {
-
-    }
-
-    public void remove() {
-
-    }
-*/
-    public String toString(){
-        String s = "";
-        Noeud courant = this.debut;
-        while (courant.getSuivant() != null) {
-            s += courant.getData() + " ";
-            courant = courant.getSuivant();
-        }
-        return s;
-    }
+    /*
+     * public void add(int index, String s) {
+     * 
+     * }
+     * 
+     * public void remove() {
+     * 
+     * }
+     */
     public static void main(String[] args) {
         StringLinkedList link = new StringLinkedList();
         link.add("test");
