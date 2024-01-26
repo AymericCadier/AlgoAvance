@@ -33,6 +33,20 @@ public class StringLinkedList {
         }
         return s;
     }
+    void clear() {
+        this.debut = null;
+    }
+
+    boolean Contains(Object O){
+        Noeud courant = this.debut;
+        while (courant.getSuivant() != null) {
+            if (courant.getData() == O) {
+                return true;
+            }
+            courant = courant.getSuivant();
+        }
+        return false;
+    }
 /* 
     public void affiche() {
         Noeud courant = this.debut;
