@@ -102,9 +102,9 @@ public class StringLinkedList {
 
         StringLinkedList liste = new StringLinkedList();
     
-        liste.add("Premier ");
-        liste.add("Deuxième ");
-        liste.add("Troisième ");
+        liste.add("Premier");
+        liste.add("Deuxième");
+        liste.add("Troisième");
         
         System.out.println(liste.toString());
         
