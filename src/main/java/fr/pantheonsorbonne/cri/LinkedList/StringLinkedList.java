@@ -23,10 +23,11 @@ public class StringLinkedList {
         Noeud first = new Noeud(s, this.debut);
         this.debut = first;
     }
-
+/* 
     public void affiche() {
         Noeud courant = this.debut;
     }
+*/
 
 /* 
     public void add(int index, String s) {
