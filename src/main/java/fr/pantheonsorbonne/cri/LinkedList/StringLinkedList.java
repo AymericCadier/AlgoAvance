@@ -27,6 +27,16 @@ public class StringLinkedList {
         Noeud first = new Noeud(s, this.debut);
         this.debut = first;
     }
+
+    public String toString(){
+        String s = "";
+        Noeud courant = this.debut;
+        while (courant.getSuivant() != null) {
+            s += courant.getData();
+            courant = courant.getSuivant();
+        }
+        return s;
+    }
 /* 
     public void affiche() {
         Noeud courant = this.debut;
