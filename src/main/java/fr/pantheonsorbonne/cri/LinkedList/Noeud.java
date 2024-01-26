@@ -17,8 +17,8 @@ public class Noeud {
         this.data = data;
     }
 
-    public String getSuivant() {
-        return suivant.getData();
+    public Noeud getSuivant() {
+        return suivant;
     }
 
     public void setSuivant(Noeud suivant) {
