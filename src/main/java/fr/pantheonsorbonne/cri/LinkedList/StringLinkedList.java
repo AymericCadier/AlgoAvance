@@ -5,11 +5,24 @@ public class StringLinkedList {
     Noeud debut;
 
     public StringLinkedList() {
-        Noeud first = new Noeud(null, null);
-        debut = first;
+        this.debut = null;
     }
 
     public boolean add(String s) {
+        Noeud noeud = new Noeud(s, null);
+        if (this.debut == null) {
+            this.debut = noeud; 
+        } else {
+            Noeud courant = this.debut;
+            while (courant.getSuivant() != null) {
+                courant = courant.getSuivant();
+            }
+            courant.setSuivant(noeud);
+        }
+        return true;
+    }
+
+    public boolean add2(String s) {
         Noeud courant = this.debut;
         if (courant.getData() == null) {
             courant.setData(s);
@@ -23,6 +36,8 @@ public class StringLinkedList {
         }
         return true;
     }
+
+    
 
     public void addFirst(String s) {
         Noeud first = new Noeud(s, this.debut);
@@ -41,11 +56,12 @@ public class StringLinkedList {
         }
         return "erreur";
     }
+
     void clear() {
         this.debut = null;
     }
 
-    boolean Contains(Object O){
+    boolean Contains(Object O) {
         Noeud courant = this.debut;
         while (courant.getSuivant() != null) {
             if (courant.getData() == O) {
@@ -56,14 +72,15 @@ public class StringLinkedList {
         return false;
     }
 
-    public String toString(){
-        String s = "";
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
         Noeud courant = this.debut;
-        while (courant.getSuivant() != null) {
-            s += courant.getData();
+        while (courant != null) {
+            sb.append(courant.getData());
             courant = courant.getSuivant();
         }
-        return s;
+        return sb.toString();
     }
 
     /*
@@ -82,14 +99,17 @@ public class StringLinkedList {
      * }
      */
     public static void main(String[] args) {
-        StringLinkedList link = new StringLinkedList();
-        link.add("test");
-        link.add("test1");
-        link.add("test2");
-        System.out.println(link.toString());
-        link.addFirst("first");
-        System.out.println(link.toString());
+
+        StringLinkedList liste = new StringLinkedList();
+    
+        liste.add("Premier ");
+        liste.add("Deuxième ");
+        liste.add("Troisième ");
+        
+        System.out.println(liste.toString());
+        
+        
     }
+    
 
 }
-
