@@ -54,7 +54,9 @@ public class StringLinkedList {
         link.add("test");
         link.add("test1");
         link.add("test2");
+        System.out.println(link.toString());
         link.addFirst("first");
+        System.out.println(link.toString());
     }
 
 }
