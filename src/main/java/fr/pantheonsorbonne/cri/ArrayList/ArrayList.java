@@ -102,17 +102,13 @@ public class ArrayList {
     }
 
     public String set(int index, String element) {
-        return this.data[index] = element;
+        String temp = this.data[index];
+        this.data[index] = element;
+        return temp;
     }
 
     public int size() {
         return this.nb;
-    }
-
-    void affiche() {
-        for (String e : this.data) {
-            System.out.println(e);
-        }
     }
 
     @Override
@@ -124,6 +120,12 @@ public class ArrayList {
         }
         return sb.toString();
     }
+    
+    void affiche() {
+        for(String e : this.data) {
+            System.out.println(e);
+        }
+    }
 
     public Iterator<String> iterator() {
         return new ArraylistIterator(data);
@@ -131,30 +133,28 @@ public class ArrayList {
 
     public static void main(String[] args) {
 
-        ArrayList alist = new ArrayList();
+        // ArrayList alist = new ArrayList();
 
-        System.out.println(alist.toString());
+        // System.out.println(alist.toString());
 
-        for (int i = 0; i < 12; i++) {
-            alist.add("test" + i);
-        }
+        // for (int i = 0; i < 12; i++) {
+        //     alist.ajout("test" + i);
+        // }
+        // alist.affiche();
+        // System.out.println(alist.toString());
 
-        System.out.println(alist.toString());
-        alist.affiche();
+        // System.out.println(alist.get(5));
 
-        System.out.println(alist.get(5));
+        // alist.add(5, "TestADD");
 
-        alist.add(5, "TestADD");
+        // System.out.println(alist.toString());
 
-        System.out.println(alist.toString());
+        // System.out.println(alist.contains("test1"));
 
-        System.out.println(alist.contains("test1"));
-
-        System.out.println(alist.indexOf("test1"));
-        alist.remove(0);
-        System.out.println(alist.toString());
-        alist.set(0, "TestSET");
-        System.out.println(alist.toString());
-
+        // System.out.println(alist.indexOf("test1"));
+        // alist.remove(0);
+        // System.out.println(alist.toString());
+        // alist.set(0, "TestSET");
+        // System.out.println(alist.toString());
     }
 }
