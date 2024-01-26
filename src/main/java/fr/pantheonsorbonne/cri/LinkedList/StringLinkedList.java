@@ -11,12 +11,16 @@ public class StringLinkedList {
 
     public boolean add(String s) {
         Noeud courant = this.debut;
+        if (courant.getData()==null){
+            courant.setData(s);
+            courant.setSuivant(null);
+        } else {
         while (courant.getSuivant() != null) {
             courant = courant.getSuivant();
         }
         Noeud noeud = new Noeud(s,null);
-        courant.setSuivant(noeud);
-        return true;
+        courant.setSuivant(noeud);}
+        return true; 
     }
 
     public void addFirst(String s) {
@@ -38,13 +42,22 @@ public class StringLinkedList {
 
     }
 */
-
+    public String toString(){
+        String s = "";
+        Noeud courant = this.debut;
+        while (courant.getSuivant() != null) {
+            s += courant.getData() + " ";
+            courant = courant.getSuivant();
+        }
+        return s;
+    }
     public static void main(String[] args) {
         StringLinkedList link = new StringLinkedList();
         link.add("test");
         link.add("test1");
         link.add("test2");
         link.addFirst("first");
+        System.out.println(link.toString());
     }
 
 }
