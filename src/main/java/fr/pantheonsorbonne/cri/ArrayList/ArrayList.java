@@ -1,8 +1,8 @@
-package fr.pantheonsorbonne.cri;
+package fr.pantheonsorbonne.cri.ArrayList;
 
 import java.util.Iterator;
 
-public class ArrayList{
+public class ArrayList {
 
     String[] data;
     int nb;
@@ -12,12 +12,29 @@ public class ArrayList{
         this.nb = 0;
     }
 
-    public boolean add(String s) {
-        ensureCapacity(this.nb + 1); 
-        this.data[nb] = s;
-        nb++;
-        return true;
+    boolean add(String s) {
+        ensureCapacity(this.nb + 1);
+        if (s != null) {
+            this.data[nb] = s;
+            nb++;
+            for (String i : this.data) {
+
+                if (i == s) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
+
+    /*
+     * public boolean add(String s) {
+     * ensureCapacity(this.nb + 1);
+     * this.data[nb] = s;
+     * nb++;
+     * return true;
+     * }
+     */
 
     public void add(int index, String elem) {
 
@@ -92,6 +109,12 @@ public class ArrayList{
         return this.nb;
     }
 
+    void affiche() {
+        for (String e : this.data) {
+            System.out.println(e);
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -117,6 +140,7 @@ public class ArrayList{
         }
 
         System.out.println(alist.toString());
+        alist.affiche();
 
         System.out.println(alist.get(5));
 
@@ -131,5 +155,6 @@ public class ArrayList{
         System.out.println(alist.toString());
         alist.set(0, "TestSET");
         System.out.println(alist.toString());
+
     }
 }

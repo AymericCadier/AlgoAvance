@@ -1,6 +1,9 @@
 package fr.pantheonsorbonne.cri;
 
 import org.junit.jupiter.api.Test;
+
+import fr.pantheonsorbonne.cri.ArrayList.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayOutputStream;

@@ -1,4 +1,4 @@
-package fr.pantheonsorbonne.cri;
+package fr.pantheonsorbonne.cri.ArrayList;
 
 import java.util.Iterator;
 
