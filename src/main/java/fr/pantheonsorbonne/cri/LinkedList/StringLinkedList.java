@@ -93,8 +93,49 @@ public class StringLinkedList {
     }
 
     public boolean offer(String s) {
-        
+        Noeud noeud = new Noeud(s, null);
+        if (this.debut == null) {
+            this.debut = noeud;
+        } else {
+            Noeud courant = this.debut;
+            while (courant.getSuivant() != null) {
+                courant = courant.getSuivant();
+            }
+            courant.setSuivant(noeud);
+        }
         return true;
+    }
+
+    public String poll() {
+        Noeud temp = this.debut;
+        this.debut = this.debut.getSuivant();
+        return temp.getData();
+
+    }
+
+    public void push(String s) {
+        Noeud push = new Noeud(s, this.debut);
+        this.debut = push;
+    }
+
+    public String remove() {
+        Noeud temp = this.debut;
+        this.debut = this.debut.getSuivant();
+        return temp.getData();
+    }
+
+    public String removeLast() {
+        Noeud courant = this.debut;
+        while (courant != null) {
+            if (courant.getSuivant().getSuivant() == null) {
+                courant.setSuivant(null);
+                return courant.getSuivant().getData();
+                
+            }
+            courant = courant.getSuivant();
+        }
+        return null;
+
     }
 
     @Override
@@ -135,6 +176,15 @@ public class StringLinkedList {
 
         System.out.println(liste.getFirst());
         System.out.println(liste.getLast());
+        liste.offer("OFFER");
+        System.out.println(liste.toString());
+        System.out.println(liste.poll());
+        System.out.println(liste.toString());
+        liste.push("PUSH");
+        System.out.println(liste.toString());
+        System.out.println(liste.remove());
+        System.out.println(liste.toString());
+        //System.out.println(liste.removeLast());
     }
 
 }
