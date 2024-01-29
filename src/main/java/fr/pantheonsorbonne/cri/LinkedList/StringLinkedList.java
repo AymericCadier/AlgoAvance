@@ -138,6 +138,20 @@ public class StringLinkedList {
 
     }
 
+    public String remove(int index) { // MARCHE PAS
+        Noeud courant = this.debut;
+        int nb = 0;
+        while (courant != null) {
+            if (nb - 1 == index) {
+                courant.setSuivant(courant.getSuivant().getSuivant());
+                return courant.getSuivant().getData();
+            }
+            nb++;
+            courant = courant.getSuivant();
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -184,7 +198,19 @@ public class StringLinkedList {
         System.out.println(liste.toString());
         System.out.println(liste.remove());
         System.out.println(liste.toString());
-        //System.out.println(liste.removeLast());
-    }
+        System.out.println(liste.removeLast());
 
+
+
+        liste.clear();
+        liste.add("Premier");
+        liste.add("Deuxième");
+        liste.add("Troisième");
+        liste.add("Quatrième");
+        liste.add("Cinquième");
+        liste.add("Sixième");
+        System.out.println(liste.toString());
+        System.out.println(liste.remove(5)); // MARCHE PAS
+        System.out.println(liste.toString());
+    }
 }
