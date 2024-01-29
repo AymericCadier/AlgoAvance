@@ -1,5 +1,7 @@
 package fr.pantheonsorbonne.cri.LinkedList;
 
+import java.util.Iterator;
+
 public class StringLinkedList {
 
     Noeud debut;
@@ -11,7 +13,7 @@ public class StringLinkedList {
     public boolean add(String s) {
         Noeud noeud = new Noeud(s, null);
         if (this.debut == null) {
-            this.debut = noeud; 
+            this.debut = noeud;
         } else {
             Noeud courant = this.debut;
             while (courant.getSuivant() != null) {
@@ -21,23 +23,22 @@ public class StringLinkedList {
         }
         return true;
     }
-
-    public boolean add2(String s) {
-        Noeud courant = this.debut;
-        if (courant.getData() == null) {
-            courant.setData(s);
-            courant.setSuivant(null);
-        } else {
-            while (courant.getSuivant() != null) {
-                courant = courant.getSuivant();
-            }
-            Noeud noeud = new Noeud(s, null);
-            courant.setSuivant(noeud);
-        }
-        return true;
-    }
-
-    
+    /*
+     * public boolean add2(String s) {
+     * Noeud courant = this.debut;
+     * if (courant.getData() == null) {
+     * courant.setData(s);
+     * courant.setSuivant(null);
+     * } else {
+     * while (courant.getSuivant() != null) {
+     * courant = courant.getSuivant();
+     * }
+     * Noeud noeud = new Noeud(s, null);
+     * courant.setSuivant(noeud);
+     * }
+     * return true;
+     * }
+     */
 
     public void addFirst(String s) {
         Noeud first = new Noeud(s, this.debut);
@@ -61,15 +62,39 @@ public class StringLinkedList {
         this.debut = null;
     }
 
-    boolean Contains(Object O) {
+    boolean Contains(String s) {
         Noeud courant = this.debut;
         while (courant.getSuivant() != null) {
-            if (courant.getData() == O) {
+            if (courant.getData() == s) {
                 return true;
             }
             courant = courant.getSuivant();
         }
         return false;
+    }
+
+    public String getFirst() {
+        return this.debut.getData();
+    }
+
+    public String getLast() { // JSP ON PEUT MIEUX FAIRE JE PENSE
+        Noeud courant = this.debut;
+        while (courant != null) {
+            if (courant.getSuivant().getSuivant() == null) {
+                return courant.getSuivant().getData();
+            }
+            courant = courant.getSuivant();
+        }
+        return null;
+    }
+
+    public Iterator<String> iterator() {
+        return new StringLinkedListIterator(this.debut);
+    }
+
+    public boolean offer(String s) {
+        
+        return true;
     }
 
     @Override
@@ -101,15 +126,15 @@ public class StringLinkedList {
     public static void main(String[] args) {
 
         StringLinkedList liste = new StringLinkedList();
-    
+
         liste.add("Premier");
         liste.add("Deuxième");
         liste.add("Troisième");
-        
+
         System.out.println(liste.toString());
-        
-        
+
+        System.out.println(liste.getFirst());
+        System.out.println(liste.getLast());
     }
-    
 
 }
