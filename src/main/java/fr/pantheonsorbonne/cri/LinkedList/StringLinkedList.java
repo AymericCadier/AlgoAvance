@@ -58,11 +58,11 @@ public class StringLinkedList {
         return "erreur";
     }
 
-    void clear() {
+    public void clear() {
         this.debut = null;
     }
 
-    boolean Contains(String s) {
+    public boolean Contains(String s) {
         Noeud courant = this.debut;
         while (courant.getSuivant() != null) {
             if (courant.getData() == s) {
@@ -125,32 +125,44 @@ public class StringLinkedList {
     }
 
     public String removeLast() {
+        if (this.debut == null) {
+            return null;
+        }    
         Noeud courant = this.debut;
-        while (courant != null) {
-            if (courant.getSuivant().getSuivant() == null) {
-                courant.setSuivant(null);
-                return courant.getSuivant().getData();
-                
-            }
+        Noeud precedent = null;
+        while (courant.getSuivant() != null) {
+            precedent = courant;
             courant = courant.getSuivant();
-        }
-        return null;
-
+        }    
+        if (precedent == null) {
+            this.debut = null;
+        } else {
+            precedent.setSuivant(null);
+        }    
+        return courant.getData();
     }
+    
 
-    public String remove(int index) { // MARCHE PAS
+    public void remove(int index) {
+        if (index < 0 || this.debut == null) {
+            return;
+        }    
+        if (index == 0) {
+            this.debut = this.debut.getSuivant();
+            return;
+        }    
         Noeud courant = this.debut;
         int nb = 0;
-        while (courant != null) {
-            if (nb - 1 == index) {
-                courant.setSuivant(courant.getSuivant().getSuivant());
-                return courant.getSuivant().getData();
-            }
-            nb++;
+        while (courant != null && nb < index - 1) {
             courant = courant.getSuivant();
+            nb++;
+        }    
+        if (courant == null || courant.getSuivant() == null) {
+            return;
         }
-        return null;
+        courant.setSuivant(courant.getSuivant().getSuivant());
     }
+    
 
     @Override
     public String toString() {
@@ -163,54 +175,28 @@ public class StringLinkedList {
         return sb.toString();
     }
 
-    /*
-     * public void affiche() {
-     * Noeud courant = this.debut;
-     * }
-     */
+    public int size() {
+        Noeud courant = this.debut;
+        int i = 0;
+        while (courant != null) {
+            i++;
+            courant = courant.getSuivant();
+        }
+        return i;
+    }
 
-    /*
-     * public void add(int index, String s) {
-     * 
-     * }
-     * 
-     * public void remove() {
-     * 
-     * }
-     */
+    public void  set(int index, String element) {
+        Noeud courant = this.debut;
+        int i = 0;
+        while (courant != null) {
+            if (i == index) {
+                courant.setData(element);
+            }
+            i++;
+            courant = courant.getSuivant();
+        }
+    }
+
     public static void main(String[] args) {
-
-        StringLinkedList liste = new StringLinkedList();
-
-        liste.add("Premier");
-        liste.add("Deuxième");
-        liste.add("Troisième");
-
-        System.out.println(liste.toString());
-
-        System.out.println(liste.getFirst());
-        System.out.println(liste.getLast());
-        liste.offer("OFFER");
-        System.out.println(liste.toString());
-        System.out.println(liste.poll());
-        System.out.println(liste.toString());
-        liste.push("PUSH");
-        System.out.println(liste.toString());
-        System.out.println(liste.remove());
-        System.out.println(liste.toString());
-        System.out.println(liste.removeLast());
-
-
-
-        liste.clear();
-        liste.add("Premier");
-        liste.add("Deuxième");
-        liste.add("Troisième");
-        liste.add("Quatrième");
-        liste.add("Cinquième");
-        liste.add("Sixième");
-        System.out.println(liste.toString());
-        System.out.println(liste.remove(5)); // MARCHE PAS
-        System.out.println(liste.toString());
     }
 }

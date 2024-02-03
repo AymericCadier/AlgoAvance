@@ -12,7 +12,7 @@ public class ArrayList {
         this.nb = 0;
     }
 
-    boolean add(String s) {
+    public boolean add(String s) {
         ensureCapacity(this.nb + 1);
         if (s != null) {
             this.data[nb] = s;
