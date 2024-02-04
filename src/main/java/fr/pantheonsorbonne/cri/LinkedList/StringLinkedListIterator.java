@@ -11,7 +11,7 @@ public class StringLinkedListIterator implements Iterator<String>{
     }
 
     @Override
-    public boolean hasNext() { // jsp imo c'est bon mais on peut mieux faire
+    public boolean hasNext() { 
         Noeud courant = this.debut;
         while(courant != null) {
             if (courant.getSuivant() != null) {
@@ -22,9 +22,16 @@ public class StringLinkedListIterator implements Iterator<String>{
         return false;
     }
 
-    @Override // jsp
+    @Override 
     public String next() {
-        // TODO Auto-generated method stub
+        Noeud courant = this.debut;
+        while(courant != null) {
+            if (courant.getSuivant() != null) {
+                return courant.getValeur();
+            }
+            courant = courant.getSuivant();
+        }
+        
         throw new UnsupportedOperationException("Unimplemented method 'next'");
     }
     

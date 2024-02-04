@@ -23,6 +23,20 @@ public class StringLinkedList {
         }
         return true;
     }
+
+    public void add(int index, String slement){
+        Noeud courant = this.debut;
+        int i = 0;
+        while (courant != null) {
+            if (i == index) {
+                Noeud noeud = new Noeud(slement, courant.getSuivant());
+                courant.setSuivant(noeud);
+            }
+            i++;
+            courant = courant.getSuivant();
+        }
+    }
+
     /*
      * public boolean add2(String s) {
      * Noeud courant = this.debut;
@@ -62,6 +76,18 @@ public class StringLinkedList {
         this.debut = null;
     }
 
+
+    public boolean contains(Object o){
+        Noeud courant = this.debut;
+        while (courant.getSuivant() != null) {
+            if (courant.getData() == o) {
+                return true;
+            }
+            courant = courant.getSuivant();
+        }
+        return false;
+    }
+    
     public boolean Contains(String s) {
         Noeud courant = this.debut;
         while (courant.getSuivant() != null) {

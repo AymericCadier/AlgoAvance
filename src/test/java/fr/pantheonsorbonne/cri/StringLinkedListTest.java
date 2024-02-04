@@ -151,4 +151,33 @@ class StringLinkedListTest {
         assertEquals(3, list.size());
     }
 
+    @Test
+    void testIsEmpty() {
+        StringLinkedList list = new StringLinkedList();
+        assertTrue(list.isEmpty());
+        list.add("First");
+        assertFalse(list.isEmpty());
+    }
+
+    @Test
+    void testToArray() {
+        StringLinkedList list = new StringLinkedList();
+        list.add("First");
+        list.add("Second");
+        list.add("Third");
+        String[] array = list.toArray();
+        assertEquals("First", array[0]);
+        assertEquals("Second", array[1]);
+        assertEquals("Third", array[2]);
+    }
+
+    @Test
+    void testToString() {
+        StringLinkedList list = new StringLinkedList();
+        list.add("First");
+        list.add("Second");
+        list.add("Third");
+        assertEquals("FirstSecondThird", list.toString());
+    }
+
 }
