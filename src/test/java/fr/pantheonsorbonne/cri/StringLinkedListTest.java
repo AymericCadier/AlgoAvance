@@ -120,7 +120,7 @@ class StringLinkedListTest {
         list.add("Second");
         list.add("Third");
         assertEquals("FirstSecondThird", list.toString());
-        list.remove(1);
+        assertEquals("Second", list.remove(1));
         assertEquals("FirstThird", list.toString());
     }
 

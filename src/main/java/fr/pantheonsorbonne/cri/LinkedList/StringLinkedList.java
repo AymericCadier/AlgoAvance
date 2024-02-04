@@ -87,7 +87,7 @@ public class StringLinkedList {
         }
         return false;
     }
-    
+
     public boolean Contains(String s) {
         Noeud courant = this.debut;
         while (courant.getSuivant() != null) {
@@ -103,6 +103,7 @@ public class StringLinkedList {
         return this.debut.getData();
     }
 
+ 
     public String getLast() { // JSP ON PEUT MIEUX FAIRE JE PENSE
         Noeud courant = this.debut;
         while (courant != null) {
@@ -168,14 +169,14 @@ public class StringLinkedList {
         return courant.getData();
     }
     
-
-    public void remove(int index) {
+    public String remove(int index) {
         if (index < 0 || this.debut == null) {
-            return;
+            return null;
         }    
         if (index == 0) {
+            Noeud temp = this.debut;
             this.debut = this.debut.getSuivant();
-            return;
+            return temp.getData();
         }    
         Noeud courant = this.debut;
         int nb = 0;
@@ -184,10 +185,32 @@ public class StringLinkedList {
             nb++;
         }    
         if (courant == null || courant.getSuivant() == null) {
-            return;
+            return null;
         }
+        Noeud temp = courant.getSuivant();
         courant.setSuivant(courant.getSuivant().getSuivant());
+        return temp.getData();
     }
+
+    // public void remove(int index) {
+    //     if (index < 0 || this.debut == null) {
+    //         return;
+    //     }    
+    //     if (index == 0) {
+    //         this.debut = this.debut.getSuivant();
+    //         return;
+    //     }    
+    //     Noeud courant = this.debut;
+    //     int nb = 0;
+    //     while (courant != null && nb < index - 1) {
+    //         courant = courant.getSuivant();
+    //         nb++;
+    //     }    
+    //     if (courant == null || courant.getSuivant() == null) {
+    //         return;
+    //     }
+    //     courant.setSuivant(courant.getSuivant().getSuivant());
+    // }
     
 
     @Override

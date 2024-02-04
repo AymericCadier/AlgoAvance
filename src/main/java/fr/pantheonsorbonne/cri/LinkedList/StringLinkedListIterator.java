@@ -11,28 +11,19 @@ public class StringLinkedListIterator implements Iterator<String>{
     }
 
     @Override
-    public boolean hasNext() { 
-        Noeud courant = this.debut;
-        while(courant != null) {
-            if (courant.getSuivant() != null) {
-                return true;
-            }
-            courant = courant.getSuivant();
+        public boolean hasNext() {
+            return current != null;
         }
-        return false;
-    }
 
-    @Override 
-    public String next() {
-        Noeud courant = this.debut;
-        while(courant != null) {
-            if (courant.getSuivant() != null) {
-                return courant.getValeur();
+
+        @Override
+        public String next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
             }
-            courant = courant.getSuivant();
+            String data = current.data;
+            current = current.next;
+            return data;
         }
-        
-        throw new UnsupportedOperationException("Unimplemented method 'next'");
-    }
     
 }
