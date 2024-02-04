@@ -1,6 +1,7 @@
 package fr.pantheonsorbonne.cri.LinkedList;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class StringLinkedListIterator implements Iterator<String>{
 
@@ -12,7 +13,7 @@ public class StringLinkedListIterator implements Iterator<String>{
 
     @Override
         public boolean hasNext() {
-            return current != null;
+            return debut != null;
         }
 
 
@@ -21,8 +22,8 @@ public class StringLinkedListIterator implements Iterator<String>{
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
-            String data = current.data;
-            current = current.next;
+            String data = debut.getData();
+            debut = debut.getSuivant();
             return data;
         }
     
