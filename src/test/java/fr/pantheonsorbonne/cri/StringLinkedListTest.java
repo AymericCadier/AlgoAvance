@@ -55,7 +55,7 @@ class StringLinkedListTest {
         StringLinkedList list = new StringLinkedList();
         list.add("First");
         list.add("Second");
-        assertTrue(list.Contains("First"));
+        assertTrue(list.Contains("Second"));
         assertFalse(list.Contains("Third"));
     }
 
