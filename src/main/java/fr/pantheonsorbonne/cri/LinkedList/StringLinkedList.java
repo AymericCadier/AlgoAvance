@@ -235,6 +235,24 @@ public class StringLinkedList {
         }
     }
 
+    public boolean contains2(String s) {
+        if (this.debut == null) {
+            return false;
+        } else {
+            return this.debut.cont(s);
+        }
+    }
+
+    public boolean add2(String s) {
+        if (this.debut == null) {
+            Noeud noeud = new Noeud(s, null);
+            this.debut = noeud;
+            return true;
+        } else {
+            return this.debut.ad(s);
+        }
+    }
+
     public static void main(String[] args) {
     }
 }
