@@ -25,4 +25,23 @@ public class Noeud {
         this.suivant = suivant;
     }
 
+    public boolean cont(String s) {
+        if (this.getData() == s) {
+            return true;
+        } else if (this.getSuivant() == null) {
+            return false;
+        } else {
+            return this.getSuivant().cont(s);
+        }
+    }
+
+    public boolean ad(String s) {
+        if (this.getSuivant() == null) {
+            Noeud noeud = new Noeud(s, null);
+            this.setSuivant(noeud);
+            return true;
+        } else {
+            return this.getSuivant().ad(s);
+        }
+    }
 }
