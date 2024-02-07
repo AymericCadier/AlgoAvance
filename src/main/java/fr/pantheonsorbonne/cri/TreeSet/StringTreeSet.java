@@ -23,4 +23,12 @@ public class StringTreeSet {
             return this.racine.cont(s);
         }
     }
+
+    public String toString() {
+        if (this.racine == null) {
+            return "";
+        } else {
+            return this.racine.toString();
+        }
+    }
 }
