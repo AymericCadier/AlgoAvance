@@ -30,5 +30,23 @@ public class Noeud {
     public void setDroit(Noeud droit) {
         this.droit = droit;
     }
+
+    public boolean cont(String s) {
+        if (this.getData() == s) {
+            return true;
+        } else if (this.getData().compareTo(s) > 0) {
+            if (this.getGauche() == null) {
+                return false;
+            } else {
+                return this.getGauche().cont(s);
+            }
+        } else {
+            if (this.getDroit() == null) {
+                return false;
+            } else {
+                return this.getDroit().cont(s);
+            }
+        }
+    }
     
 }
