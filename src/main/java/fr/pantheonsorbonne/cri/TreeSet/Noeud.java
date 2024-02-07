@@ -68,5 +68,17 @@ public class Noeud {
             }
         }
     }
+    public String toString() {
+        if (this.getGauche() == null && this.getDroit() == null) {
+            return this.getData();
+        } else if (this.getGauche() == null) {
+            return this.getData() + ", " + this.getDroit().toString();
+        } else if (this.getDroit() == null) {
+            return this.getGauche().toString() + ", " + this.getData();
+        } else {
+            return this.getGauche().toString() + ", " + this.getData() + ", " + this.getDroit().toString();
+        }
+    } 
+
     
 }

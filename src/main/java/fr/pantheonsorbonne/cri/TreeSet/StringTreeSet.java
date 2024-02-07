@@ -26,9 +26,22 @@ public class StringTreeSet {
 
     public String toString() {
         if (this.racine == null) {
-            return "";
+            return "[]";
         } else {
-            return this.racine.toString();
+            return "[" + this.racine.toString() + "]";
         }
+    }
+
+
+    public static void main(String[] args) {
+        StringTreeSet set = new StringTreeSet();
+        set.add("a");
+        set.add("y");
+        set.add("m");
+        set.add("e");
+        set.add("r");
+        set.add("i");
+        set.add("c");
+        System.out.println(set.toString());
     }
 }
