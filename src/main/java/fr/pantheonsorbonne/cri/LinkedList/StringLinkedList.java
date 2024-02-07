@@ -77,21 +77,10 @@ public class StringLinkedList {
     }
 
 
-    public boolean contains(Object o){
+    public boolean Contains(Object o){
         Noeud courant = this.debut;
-        while (courant.getSuivant() != null) {
-            if (courant.getData() == o) {
-                return true;
-            }
-            courant = courant.getSuivant();
-        }
-        return false;
-    }
-
-    public boolean Contains(String s) {
-        Noeud courant = this.debut;
-        while (courant.getSuivant() != null) {
-            if (courant.getData() == s) {
+        while (courant != null) {
+            if (courant.getData().equals(o)) {
                 return true;
             }
             courant = courant.getSuivant();
