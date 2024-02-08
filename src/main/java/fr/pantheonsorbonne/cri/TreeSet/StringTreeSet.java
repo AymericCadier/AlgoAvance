@@ -16,6 +16,31 @@ public class StringTreeSet {
         }
     }
 
+    public boolean addNonRecursif(String s) {
+        Noeud nc = this.racine;
+        while (nc != null) {
+            int c = s.compareTo(s);
+            if (c == 0) {
+                return false;
+            } else if (c < 0) {
+                if (nc.gauche == null) {
+                    nc.gauche = new Noeud(s, null, null);
+                    return true;
+                } else {
+                    nc = nc.gauche;
+                }
+            } else {
+                if (nc.droit == null) {
+                    nc.droit = new Noeud(s, null, null);
+                    return true;
+                } else {
+                    nc = nc.droit;
+                }
+            }
+        }
+        return false;
+    }
+
     public boolean contains(String s) {
         if (this.racine == null) {
             return false;
@@ -23,6 +48,21 @@ public class StringTreeSet {
             return this.racine.cont(s);
         }
     }
+    
+    public boolean containsNonRecursif(String s) {
+        Noeud nc = this.racine;
+        while (nc != null) {
+            int c = s.compareTo(s);
+            if (c == 0) {
+                return true;
+            } else if (c < 0) {
+                nc = nc.gauche;
+            } else {
+                nc = nc.droit;
+            }
+        }
+        return false;
+    }   
 
     public String toString() {
         if (this.racine == null) {
@@ -31,7 +71,6 @@ public class StringTreeSet {
             return "[" + this.racine.toString() + "]";
         }
     }
-
 
     public static void main(String[] args) {
         StringTreeSet set = new StringTreeSet();
