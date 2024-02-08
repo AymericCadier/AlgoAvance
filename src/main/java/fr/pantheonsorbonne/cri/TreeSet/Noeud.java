@@ -68,6 +68,12 @@ public class Noeud {
             }
         }
     }
+
+    
+    public String toStringProf() {
+        return this.getGauche().toString() + ", " + this.getData() + ", " + this.getDroit().toString();
+    }
+
     public String toString() {
         if (this.getGauche() == null && this.getDroit() == null) {
             return this.getData();
