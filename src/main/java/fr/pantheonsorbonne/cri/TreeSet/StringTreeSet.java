@@ -1,5 +1,7 @@
 package fr.pantheonsorbonne.cri.TreeSet;
 
+import java.util.Stack;
+
 public class StringTreeSet {
     Noeud racine;
 
@@ -63,6 +65,22 @@ public class StringTreeSet {
         }
         return false;
     }   
+
+    public String toStringProf() {
+        Stack<Noeud> p = new Stack<Noeud>();
+        p.push(this.racine);
+        StringBuilder sb = new StringBuilder();
+        while (!p.isEmpty()) {
+            Noeud n = p.pop();
+            if (n != null) {
+                sb.append(n.data);
+                sb.append(", ");
+                p.push(n.droit);
+                p.push(n.gauche);
+            }
+        }
+        return sb.toString();
+    }
 
     public String toString() {
         if (this.racine == null) {
