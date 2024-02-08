@@ -2,6 +2,8 @@ package fr.pantheonsorbonne.cri.TreeSet;
 
 import java.util.Stack;
 
+import javax.swing.text.html.HTMLDocument.Iterator;
+
 public class StringTreeSet {
     Noeud racine;
 
@@ -50,7 +52,7 @@ public class StringTreeSet {
             return this.racine.cont(s);
         }
     }
-    
+
     public boolean containsNonRecursif(String s) {
         Noeud nc = this.racine;
         while (nc != null) {
@@ -64,7 +66,7 @@ public class StringTreeSet {
             }
         }
         return false;
-    }   
+    }
 
     public String toStringProf() {
         Stack<Noeud> p = new Stack<Noeud>();
@@ -94,7 +96,7 @@ public class StringTreeSet {
         this.racine = null;
     }
 
-    public String first(){
+    public String first() {
         Noeud n = this.racine;
         while (n.gauche != null) {
             n = n.gauche;
@@ -106,7 +108,12 @@ public class StringTreeSet {
         return this.racine == null;
     }
 
-    public boolean remove(Object o){   
+    public boolean remove(String s) {
+
+    }
+
+    public Iterator<String> iterator() {
+        return new StringTreeSetIterator(this.racine);
     }
 
     public int size() {
@@ -115,16 +122,16 @@ public class StringTreeSet {
             return 0;
         } else {
             Stack<Noeud> p = new Stack<Noeud>();
-        p.push(this.racine);
-        while (!p.isEmpty()) {
-            Noeud n = p.pop();
-            if (n != null) {
-                p.push(n.droit);
-                p.push(n.gauche);
-                cpt++;
+            p.push(this.racine);
+            while (!p.isEmpty()) {
+                Noeud n = p.pop();
+                if (n != null) {
+                    p.push(n.droit);
+                    p.push(n.gauche);
+                    cpt++;
+                }
             }
-        }
-        return cpt;
+            return cpt;
         }
     }
 
