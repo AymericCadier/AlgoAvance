@@ -5,11 +5,13 @@ public class Noeud {
     String data;
     Noeud gauche;
     Noeud droit;
+    Noeud pere;
 
-    public Noeud(String data, Noeud gauche, Noeud droit) {
+    public Noeud(String data, Noeud gauche, Noeud droit, Noeud pere) {
         this.data = data;
         this.gauche = gauche;
         this.droit = droit;
+        this.pere = pere;
     }
 
     public String getData() {
@@ -30,20 +32,26 @@ public class Noeud {
     public void setDroit(Noeud droit) {
         this.droit = droit;
     }
+    public Noeud getPere() {
+        return this.pere;
+    }
+    public void setPere(Noeud pere) {
+        this.pere = pere;
+    }
 
     public boolean add(String s) {
         if (this.getData() == s) {
             return false;
         } else if (this.getData().compareTo(s) > 0) {
             if (this.getGauche() == null) {
-                this.setGauche(new Noeud(s, null, null));
+                this.setGauche(new Noeud(s, null, null, null));
                 return true;
             } else {
                 return this.getGauche().add(s);
             }
         } else {
             if (this.getDroit() == null) {
-                this.setDroit(new Noeud(s, null, null));
+                this.setDroit(new Noeud(s, null, null, null));
                 return true;
             } else {
                 return this.getDroit().add(s);

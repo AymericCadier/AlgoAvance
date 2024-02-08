@@ -11,7 +11,7 @@ public class StringTreeSet {
 
     public boolean add(String s) {
         if (this.racine == null) {
-            this.racine = new Noeud(s, null, null);
+            this.racine = new Noeud(s, null, null, null);
             return true;
         } else {
             return this.racine.add(s);
@@ -26,14 +26,14 @@ public class StringTreeSet {
                 return false;
             } else if (c < 0) {
                 if (nc.gauche == null) {
-                    nc.gauche = new Noeud(s, null, null);
+                    nc.gauche = new Noeud(s, null, null, null);
                     return true;
                 } else {
                     nc = nc.gauche;
                 }
             } else {
                 if (nc.droit == null) {
-                    nc.droit = new Noeud(s, null, null);
+                    nc.droit = new Noeud(s, null, null, null);
                     return true;
                 } else {
                     nc = nc.droit;
@@ -90,6 +90,44 @@ public class StringTreeSet {
         }
     }
 
+    public void clear() {
+        this.racine = null;
+    }
+
+    public String first(){
+        Noeud n = this.racine;
+        while (n.gauche != null) {
+            n = n.gauche;
+        }
+        return n.data;
+    }
+
+    public boolean isEmpty() {
+        return this.racine == null;
+    }
+
+    public boolean remove(Object o){   
+    }
+
+    public int size() {
+        int cpt = 0;
+        if (this.racine == null) {
+            return 0;
+        } else {
+            Stack<Noeud> p = new Stack<Noeud>();
+        p.push(this.racine);
+        while (!p.isEmpty()) {
+            Noeud n = p.pop();
+            if (n != null) {
+                p.push(n.droit);
+                p.push(n.gauche);
+                cpt++;
+            }
+        }
+        return cpt;
+        }
+    }
+
     public static void main(String[] args) {
         StringTreeSet set = new StringTreeSet();
         set.add("a");
@@ -100,5 +138,10 @@ public class StringTreeSet {
         set.add("i");
         set.add("c");
         System.out.println(set.toString());
+        System.out.println(set.toStringProf());
+        System.out.println(set.size());
+        System.out.println(set.isEmpty());
+        System.out.println(set.contains("a"));
+        System.out.println(set.first());
     }
 }
