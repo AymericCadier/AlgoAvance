@@ -2,7 +2,7 @@ package fr.pantheonsorbonne.cri.TreeSet;
 
 import java.util.Stack;
 
-import javax.swing.text.html.HTMLDocument.Iterator;
+//import javax.swing.text.html.HTMLDocument.Iterator;
 
 public class StringTreeSet {
     Noeud racine;
@@ -108,11 +108,9 @@ public class StringTreeSet {
         return this.racine == null;
     }
 
-    public boolean remove(String s) {
+    //public boolean remove(String s) {}
 
-    }
-
-    public Iterator<String> iterator() {
+    public StringTreeSetIterator iterator() {
         return new StringTreeSetIterator(this.racine);
     }
 

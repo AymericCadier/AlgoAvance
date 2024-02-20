@@ -23,7 +23,7 @@ public class StringTreeSetIterator implements Iterator<String>{
 
     public String next() {
         Noeud nc = this.stack.pop();
-        String res = nc.valeur;
+        String res = nc.data;
         if (nc.droit != null) {
             nc = nc.droit;
             while (nc != null) {
