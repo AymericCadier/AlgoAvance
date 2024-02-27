@@ -156,7 +156,7 @@ public class RedBlackTree<E extends Comparable<E>> implements Iterable<E> {
                     rotateLeft(parentOf(x));
                     x = root;
                 }
-            } else { // Symmetric to the "if" clause
+            } else {
                 Node sib = leftOf(parentOf(x));
 
                 if (colorOf(sib) == RED) {
@@ -334,5 +334,11 @@ public boolean isEmpty() {
 public int size() {
     return size;
 }
+
+public void clear() {
+    root = null;
+    size = 0;
+}
+
 
 }
