@@ -11,12 +11,21 @@ public class StringTreeSet {
         this.racine = null;
     }
 
+    public Noeud getRacine() {
+        return this.racine;
+    }
+
+    public void setRacine(Noeud racine) {
+        this.racine = racine;
+    }
+
     public boolean add(String s) {
         if (this.racine == null) {
-            this.racine = new Noeud(s, null, null, null);
+            this.racine = new Noeud(s, null, null, null, "noir");
             return true;
         } else {
-            return this.racine.add(s);
+            this.racine.add(s);
+            return true;
         }
     }
 
@@ -28,14 +37,14 @@ public class StringTreeSet {
                 return false;
             } else if (c < 0) {
                 if (nc.gauche == null) {
-                    nc.gauche = new Noeud(s, null, null, null);
+                    nc.gauche = new Noeud(s, null, null, null, null);
                     return true;
                 } else {
                     nc = nc.gauche;
                 }
             } else {
                 if (nc.droit == null) {
-                    nc.droit = new Noeud(s, null, null, null);
+                    nc.droit = new Noeud(s, null, null, null, null);
                     return true;
                 } else {
                     nc = nc.droit;
@@ -114,80 +123,20 @@ public class StringTreeSet {
         return new StringTreeSetIterator(this.racine);
     }
 
-    public boolean remove(String e) {
-        if (racine == null) {
-            return false; // L'arbre est vide, l'élément n'est pas présent
-        }
+   
 
-        Noeud parent = null;
-        Noeud courant = racine;
-        boolean isLeftChild = false;
-
-        // Recherche de l'élément à supprimer
-        while (courant != null) {
-            int c = e.compareTo(courant.getData());
-            if (c == 0) {
-                break; // Élément trouvé
-            } else {
-                parent = courant;
-                if (c < 0) {
-                    courant = courant.getGauche();
-                    isLeftChild = true;
-                } else {
-                    courant = courant.getDroit();
-                    isLeftChild = false;
-                }
-            }
-        }
-
-        if (courant == null) {
-            return false; // L'élément n'est pas présent dans l'arbre
-        }
-
-        // Cas où le nœud à supprimer n'a pas d'enfants
-        if (courant.getGauche() == null && courant.getDroit() == null) {
-            if (courant == racine) {
-                racine = null;
-            } else if (isLeftChild) {
-                parent.setGauche(null);
-            } else {
-                parent.setDroit(null);
-            }
-        }
-        // Cas où le nœud à supprimer a un seul enfant
-        else if (courant.getDroit() == null) {
-            if (courant == racine) {
-                racine = courant.getGauche();
-            } else if (isLeftChild) {
-                parent.setGauche(courant.getGauche());
-            } else {
-                parent.setDroit(courant.getGauche());
-            }
-        } else if (courant.getGauche() == null) {
-            if (courant == racine) {
-                racine = courant.getDroit();
-            } else if (isLeftChild) {
-                parent.setGauche(courant.getDroit());
-            } else {
-                parent.setDroit(courant.getDroit());
-            }
-        }
-        // Cas où le nœud à supprimer a deux enfants
-        else {
-            Noeud successor = getSuccessor(courant);
-            if (courant == racine) {
-                racine = successor;
-            } else if (isLeftChild) {
-                parent.setGauche(successor);
-            } else {
-                parent.setDroit(successor);
-            }
-            successor.setGauche(courant.getGauche());
-        }
-
-        return true;
+    public boolean remove(String s) {
+    if (this.racine == null) {
+        return false;
+    } else {
+        return this.racine.remove(s);
     }
+}
 
+
+    
+    
+    
     private Noeud getSuccessor(Noeud node) {
         Noeud parentOfSuccessor = node;
         Noeud successor = node;
@@ -203,6 +152,8 @@ public class StringTreeSet {
         }
         return successor;
     }
+
+    
 
     public int size() {
         int cpt = 0;
