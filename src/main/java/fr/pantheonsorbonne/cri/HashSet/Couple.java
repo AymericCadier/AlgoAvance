@@ -26,4 +26,15 @@ public class Couple {
     public void setHash(int hash) {
         this.hash = hash;
     }
+
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+        if (!(o instanceof Couple)) {
+            return false;
+        }
+        Couple c = (Couple) o;
+        return c.s.equals(this.s);
+    }
 }

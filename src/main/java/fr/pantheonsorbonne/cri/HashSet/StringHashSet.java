@@ -9,12 +9,13 @@ public class StringHashSet {
     static final float t = 0.7f;
 
     public StringHashSet() {
-        data = new LinkedList[16];
+        data = new LinkedList[3];
     }
 
     boolean add(String s) {
+        grow();
         int h = s.hashCode();
-        int i = h % data.length;
+        int i = Math.abs(h % data.length);
         if (data[i] == null) {
             data[i] = new LinkedList<Couple>();
         }
@@ -25,13 +26,12 @@ public class StringHashSet {
         }
         data[i].add(new Couple(s, h));
         size++;
-        grow();
         return true;
     }
 
     boolean contains(String s) {
         int h = s.hashCode();
-        int i = h % data.length;
+        int i = Math.abs(h % data.length);
         if (data[i] == null) {
             return false;
         }
@@ -44,7 +44,9 @@ public class StringHashSet {
     }
 
     void grow() {
+        
         if (size / data.length > t) {
+            System.out.println("Growing");
             List<Couple>[] old = data;
             data = new LinkedList[2 * old.length];
             size = 0;
@@ -60,29 +62,18 @@ public class StringHashSet {
 
     public static void main(String[] args) {
         StringHashSet set = new StringHashSet();
-        System.out.println("Adding elements...");
-        set.add("hello");
-        set.add("world");
-        set.add("foo");
-        set.add("bar");
-        set.add("baz");
-        set.add("qux");
-        set.add("quux");
-        set.add("corge");
-        set.add("grault");
-        set.add("garply");
-        set.add("waldo");
-        set.add("fred");
-        set.add("plugh");
-        set.add("xyzzy");
-        set.add("thud");
-        System.out.println("Current set size: " + set.size);
-        System.out.println("Does the set contain \"hello\"? " + set.contains("hello"));
-        System.out.println("Does the set contain \"qux\"? " + set.contains("qux"));
-        System.out.println("Does the set contain \"plugh\"? " + set.contains("plugh"));
-        System.out.println("Does the set contain \"xyzzy\"? " + set.contains("xyzzy"));
-        System.out.println("Does the set contain \"thud\"? " + set.contains("thud"));
-        System.out.println("Does the set contain \"frobozz\"? " + set.contains("frobozz"));
-    }
+        set.add("salut");
+        set.add("je");
+        set.add("appelle");
+        set.add("Adorien");
+        set.add("HITDIER");
 
+        System.out.println("Current set size: " + set.size);
+        System.out.println(set.contains("salut"));
+        System.out.println(set.contains("je"));
+        System.out.println(set.contains("plugh"));
+        System.out.println(set.contains("appelle"));
+        System.out.println(set.contains("aymx"));
+        System.out.println(set.contains("frobozz"));
+    }
 }
