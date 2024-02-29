@@ -57,4 +57,31 @@ public class HashSetTest {
         // Assuming the size is publicly accessible. Otherwise, use reflection or make it accessible.
         Assertions.assertEquals(2, set.size);
     }
+
+    @Test
+    public void testAddNull() {
+        StringHashSet set = new StringHashSet();
+        Assertions.assertThrows(NullPointerException.class, () -> set.add(null));
+    }
+
+    @Test
+    public void testAddEmptyString() {
+        StringHashSet set = new StringHashSet();
+        Assertions.assertTrue(set.add(""));
+        Assertions.assertTrue(set.contains(""));
+    }
+
+    @Test
+    public void testRemoveNonExistentElement() {
+        StringHashSet set = new StringHashSet();
+        Assertions.assertFalse(set.remove("nonexistent"));
+    }
+
+    @Test
+    public void testSizeAfterRemovingNonExistent() {
+        StringHashSet set = new StringHashSet();
+        set.add("test");
+        set.remove("nonexistent");
+        Assertions.assertEquals(1, set.size); // Assuming size is accessible
+    }
 }
