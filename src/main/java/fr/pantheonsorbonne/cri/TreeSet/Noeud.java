@@ -66,7 +66,7 @@ public class Noeud {
     }
 
     
-    public Noeud add(String s) {
+    public Noeud add2(String s) {
         if (this.getData() == null) {
             this.setData(s);
             this.setCouleur("noir");
@@ -76,19 +76,19 @@ public class Noeud {
                 this.setGauche(new Noeud(s, null, null, this, "rouge"));
                 return this.getGauche();
             } else {
-                return this.getGauche().add(s);
+                return this.getGauche().add2(s);
             }
         } else {
             if (this.getDroit() == null) {
                 this.setDroit(new Noeud(s, null, null, this, "rouge"));
                 return this.getDroit();
             } else {
-                return this.getDroit().add(s);
+                return this.getDroit().add2(s);
             }
         }
     }
 
-    public Noeud add2(String s) {
+    public Noeud add(String s) {
     if (this.getData() == null) {
         this.setData(s);
         this.setCouleur("noir");
