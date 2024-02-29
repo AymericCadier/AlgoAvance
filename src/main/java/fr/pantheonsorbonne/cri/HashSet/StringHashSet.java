@@ -82,18 +82,24 @@ public class StringHashSet {
         set.add("je");
         set.add("appelle");
         set.add("Adorien");
-        set.add("HITDIER");
+        set.add("jimenez");
+        for (long i=0; i<1000000000; i++) {
+            set.add("salut" + i);
+        }
 
-        long startTime = System.nanoTime(); // Temps de début
-            // Appel de la méthode dont vous voulez mesurer le temps d'exécution
+        long startTime = System.currentTimeMillis();
+
         System.out.println(set.contains("je"));
         System.out.println(set.contains("salut"));
+        System.out.println(set.contains("salu"));
+        System.out.println(set.contains("appelle"));
+        for (long i = 0; i < 1000000000; i++) {
+            set.contains("salut" + i);
+        }
 
-        long endTime = System.nanoTime(); // Temps de fin
-
-        long duration = (endTime - startTime); // Calcul de la durée en nanosecondes
-
-        System.out.println("Temps d'exécution de la méthode : " + duration + " ns");
+        long endTime = System.currentTimeMillis();
+        long duration = (endTime - startTime);
+        System.out.println("Temps d'exécution de la méthode : " + duration + " ms");
 
         // System.out.println("Current set size: " + set.size);
         // System.out.println(set.contains("salut"));
