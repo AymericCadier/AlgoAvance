@@ -5,14 +5,14 @@ import java.util.List;
 
 public class StringHashSet {
     LinkedList<Couple>[] data;
-    int size = 0;
+    public int size = 0;
     static final float t = 0.7f;
 
     public StringHashSet() {
         data = new LinkedList[3];
     }
 
-    boolean add(String s) {
+    public boolean add(String s) {
         grow();
         int h = s.hashCode();
         int i = Math.abs(h % data.length);
@@ -29,7 +29,7 @@ public class StringHashSet {
         return true;
     }
 
-    boolean contains(String s) {
+    public boolean contains(String s) {
         int h = s.hashCode();
         int i = Math.abs(h % data.length);
         if (data[i] == null) {
@@ -43,7 +43,7 @@ public class StringHashSet {
         return false;
     }
 
-    boolean remove(String s) {
+    public boolean remove(String s) {
         int h = s.hashCode();
         int i = Math.abs(h % data.length);
         if (data[i] == null) {
@@ -59,7 +59,7 @@ public class StringHashSet {
         return false;
     }
 
-    void grow() {
+    public void grow() {
         
         if (size / data.length > t) {
             System.out.println("Growing");
