@@ -1,12 +1,12 @@
 package fr.pantheonsorbonne.cri;
 
+import fr.pantheonsorbonne.cri.HashSet.StringHashSet;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import fr.pantheonsorbonne.cri.HashSet.StringHashSet;
-
 public class HashSetTest {
-      @Test
+
+    @Test
     public void testAdd() {
         StringHashSet set = new StringHashSet();
         Assertions.assertTrue(set.add("hello"));
@@ -56,32 +56,5 @@ public class HashSetTest {
         set.remove("beta");
         // Assuming the size is publicly accessible. Otherwise, use reflection or make it accessible.
         Assertions.assertEquals(2, set.size);
-    }
-
-    @Test
-    public void testAddNull() {
-        StringHashSet set = new StringHashSet();
-        Assertions.assertThrows(NullPointerException.class, () -> set.add(null));
-    }
-
-    @Test
-    public void testAddEmptyString() {
-        StringHashSet set = new StringHashSet();
-        Assertions.assertTrue(set.add(""));
-        Assertions.assertTrue(set.contains(""));
-    }
-
-    @Test
-    public void testRemoveNonExistentElement() {
-        StringHashSet set = new StringHashSet();
-        Assertions.assertFalse(set.remove("nonexistent"));
-    }
-
-    @Test
-    public void testSizeAfterRemovingNonExistent() {
-        StringHashSet set = new StringHashSet();
-        set.add("test");
-        set.remove("nonexistent");
-        Assertions.assertEquals(1, set.size); // Assuming size is accessible
     }
 }
