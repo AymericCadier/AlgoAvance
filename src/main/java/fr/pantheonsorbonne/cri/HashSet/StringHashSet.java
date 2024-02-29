@@ -20,7 +20,7 @@ public class StringHashSet {
             data[i] = new LinkedList<Couple>();
         }
         for (Couple c : data[i]) {
-            if (c.s.equals(s)) {
+            if (c.getS().equals(s)) {
                 return false;
             }
         }
@@ -36,7 +36,7 @@ public class StringHashSet {
             return false;
         }
         for (Couple c : data[i]) {
-            if (c.s.equals(s)) {
+            if (c.getS().equals(s)) {
                 return true;
             }
         }
@@ -50,7 +50,7 @@ public class StringHashSet {
             return false;
         }
         for (Couple c : data[i]) {
-            if (c.s.equals(s)) {
+            if (c.getS() .equals(s)) {
                 data[i].remove(c);
                 size--;
                 return true;
