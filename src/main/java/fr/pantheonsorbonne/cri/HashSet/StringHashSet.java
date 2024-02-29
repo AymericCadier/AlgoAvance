@@ -43,6 +43,22 @@ public class StringHashSet {
         return false;
     }
 
+    boolean remove(String s) {
+        int h = s.hashCode();
+        int i = Math.abs(h % data.length);
+        if (data[i] == null) {
+            return false;
+        }
+        for (Couple c : data[i]) {
+            if (c.s.equals(s)) {
+                data[i].remove(c);
+                size--;
+                return true;
+            }
+        }
+        return false;
+    }
+
     void grow() {
         
         if (size / data.length > t) {
