@@ -1,55 +1,35 @@
 package fr.pantheonsorbonne.cri.LinkedList;
 
-import fr.pantheonsorbonne.cri.ArrayList.ArrayList;
+import java.util.Random;
 
 public class PerformanceTest {
 
     public static void main(String[] args) {
-        testArrayList();
-        testLinkedList();
-    }
+        StringLinkedList myList = new StringLinkedList();
+        Random rand = new Random();
+        int[] levels = {100,500, 750, 1000, 1250, 1500, 1750, 2000, 3000, 4000, 5000}; // Different levels to test
 
-    private static void testArrayList() {
-        ArrayList arrayList = new ArrayList();
-        final int numberOfElements = 10000; // Adjust for testing
+        for (int level : levels) {
+            // Reset the list for each level
+            myList.clear();
+            
+            // Add elements
+            long startAddTime = System.nanoTime();
+            for (int i = 0; i < level; i++) {
+                myList.add("Element " + i);
+            }
+            long endAddTime = System.nanoTime();
+            long durationAdd = (endAddTime - startAddTime) / 1000; // Convert to microseconds
+            System.out.println("Time taken to add " + level + " elements: " + durationAdd + " µs");
 
-        long startTime = System.nanoTime();
-        for (int i = 0; i < numberOfElements; i++) {
-            arrayList.add("Element " + i);
+            // Check contains
+            // Using a random element that is guaranteed to be in the list for a meaningful measurement
+            String searchFor = "Element " + rand.nextInt(level);
+            long startContainsTime = System.nanoTime();
+            boolean contains = myList.Contains(searchFor);
+            long endContainsTime = System.nanoTime();
+            long durationContains = (endContainsTime - startContainsTime) / 1000; // Convert to microseconds
+            System.out.println("Time taken to search an element (" + searchFor + "): " + durationContains + " µs, Found: " + contains);
         }
-        long endTime = System.nanoTime();
-        System.out.println("ArrayList - Time to add " + numberOfElements + " elements: " + (endTime - startTime) + " ns");
-
-        startTime = System.nanoTime();
-        arrayList.contains("Element 5000");
-        endTime = System.nanoTime();
-        System.out.println("ArrayList - Time to search for an element: " + (endTime - startTime) + " ns");
-
-        startTime = System.nanoTime();
-        arrayList.remove(5000);
-        endTime = System.nanoTime();
-        System.out.println("ArrayList - Time to remove an element: " + (endTime - startTime) + " ns");
-    }
-
-    private static void testLinkedList() {
-        StringLinkedList linkedList = new StringLinkedList();
-        final int numberOfElements = 10000; // Adjust for testing
-
-        long startTime = System.nanoTime();
-        for (int i = 0; i < numberOfElements; i++) {
-            linkedList.add("Element " + i);
-        }
-        long endTime = System.nanoTime();
-        System.out.println("LinkedList - Time to add " + numberOfElements + " elements: " + (endTime - startTime) + " ns");
-
-        startTime = System.nanoTime();
-        linkedList.Contains("Element 5000");
-        endTime = System.nanoTime();
-        System.out.println("LinkedList - Time to search for an element: " + (endTime - startTime) + " ns");
-
-        startTime = System.nanoTime();
-        linkedList.remove(5000);
-        endTime = System.nanoTime();
-        System.out.println("LinkedList - Time to remove an element: " + (endTime - startTime) + " ns");
     }
 }
