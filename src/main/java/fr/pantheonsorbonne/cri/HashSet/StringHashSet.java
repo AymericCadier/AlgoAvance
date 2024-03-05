@@ -82,7 +82,7 @@ public class StringHashSet {
         set.add("appelle");
         set.add("Adorien");
         set.add("jimenez");
-        for (long i=0; i<1000; i++) {
+        for (long i=0; i<10000; i++) {
             set.add("salut" + i);
         }
 
@@ -92,7 +92,7 @@ public class StringHashSet {
         // System.out.println(set.contains("salut"));
         // System.out.println(set.contains("salu"));
         // System.out.println(set.contains("appelle"));
-        for (long i = 0; i < 1000; i++) {
+        for (long i = 0; i < 10000; i++) {
             set.contains("salut" + i);
         }
 
