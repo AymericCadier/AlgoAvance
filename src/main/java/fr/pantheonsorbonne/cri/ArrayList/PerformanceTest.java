@@ -1,15 +1,15 @@
-package fr.pantheonsorbonne.cri.HashSet;
+package fr.pantheonsorbonne.cri.ArrayList;
 
 public class PerformanceTest {
 
     public static void main(String[] args) {
-        StringHashSet set = new StringHashSet();
-        final int numberOfElements = 10000; // Adjust for different volumes
+        ArrayList myList = new ArrayList();
+        final int numberOfElements = 10000; // Change this for more or fewer elements
 
         // Testing add operation
         long startTime = System.nanoTime();
         for (int i = 0; i < numberOfElements; i++) {
-            set.add("Element " + i);
+            myList.add("Element " + i);
         }
         long endTime = System.nanoTime();
         long durationAdd = endTime - startTime;
@@ -17,14 +17,14 @@ public class PerformanceTest {
 
         // Testing contains operation
         startTime = System.nanoTime();
-        set.contains("Element 5000"); // Example of a contained element
+        myList.contains("Element 5000"); // Example search
         endTime = System.nanoTime();
         long durationContains = endTime - startTime;
-        System.out.println("Time taken to check for an existing element: " + durationContains + " ns");
+        System.out.println("Time taken to search an element: " + durationContains + " ns");
 
         // Testing remove operation
         startTime = System.nanoTime();
-        set.remove("Element 5000"); // Removing the 5000th element as an example
+        myList.remove(5000); // Removing the 5000th element as an example
         endTime = System.nanoTime();
         long durationRemove = endTime - startTime;
         System.out.println("Time taken to remove an element: " + durationRemove + " ns");
