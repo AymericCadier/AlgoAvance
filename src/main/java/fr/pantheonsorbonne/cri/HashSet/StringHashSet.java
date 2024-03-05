@@ -77,36 +77,18 @@ public class StringHashSet {
 
     public static void main(String[] args) {
         StringHashSet set = new StringHashSet();
-        set.add("salut");
-        set.add("je");
-        set.add("appelle");
-        set.add("Adorien");
-        set.add("jimenez");
-        for (long i=0; i<10000; i++) {
+        for (long i=0; i< 5000000; i++) {
             set.add("salut" + i);
         }
-
         long startTime = System.nanoTime();
-
-        // System.out.println(set.contains("je"));
-        // System.out.println(set.contains("salut"));
-        // System.out.println(set.contains("salu"));
-        // System.out.println(set.contains("appelle"));
-        for (long i = 0; i < 10000; i++) {
+        for (long i = 0; i < 5000000; i++) {
             set.contains("salut" + i);
         }
-
         long endTime = System.nanoTime();
         long duration = (endTime - startTime)/1000;
         System.out.println("Temps d'exécution de la méthode : " + duration + " microsecondes");
 
-        // System.out.println("Current set size: " + set.size);
-        // System.out.println(set.contains("salut"));
-        // System.out.println(set.contains("je"));
-        // System.out.println(set.contains("plugh"));
-        // System.out.println(set.contains("appelle"));
-        // System.out.println(set.contains("aymx"));
-        // System.out.println(set.contains("frobozz"));
+        
 
     }
 }

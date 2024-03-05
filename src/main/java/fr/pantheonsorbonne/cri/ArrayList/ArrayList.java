@@ -2,6 +2,8 @@ package fr.pantheonsorbonne.cri.ArrayList;
 
 import java.util.Iterator;
 
+import fr.pantheonsorbonne.cri.LinkedList.StringLinkedList;
+
 public class ArrayList {
 
     String[] data;
@@ -132,6 +134,19 @@ public class ArrayList {
     }
 
     public static void main(String[] args) {
+
+        ArrayList set = new ArrayList();
+        for (long i=0; i<1002; i++) {
+            set.add("salut" + i);
+        }
+        long startTime = System.nanoTime();
+        for (long i = 0; i < 1000; i++) {
+            set.contains("salut" + i);
+        }
+        long endTime = System.nanoTime();
+        double duration = (endTime - startTime)/1000;
+        System.out.println("Temps d'exécution de la méthode : " + duration + " microsecondes");
+    
 
         // ArrayList alist = new ArrayList();
 

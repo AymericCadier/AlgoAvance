@@ -2,6 +2,8 @@ package fr.pantheonsorbonne.cri.LinkedList;
 
 import java.util.Iterator;
 
+import fr.pantheonsorbonne.cri.HashSet.StringHashSet;
+
 public class StringLinkedList {
 
     Noeud debut;
@@ -254,5 +256,16 @@ public class StringLinkedList {
     }
 
     public static void main(String[] args) {
+        StringLinkedList set = new StringLinkedList();
+        for (long i=0; i<5000; i++) {
+            set.add("salut" + i);
+        }
+        long startTime = System.nanoTime();
+        for (long i = 0; i < 5000; i++) {
+            set.Contains("salut" + i);
+        }
+        long endTime = System.nanoTime();
+        double duration = (endTime - startTime)/1000000d;
+        System.out.println("Temps d'exécution de la méthode : " + duration + " microsecondes");
     }
 }
