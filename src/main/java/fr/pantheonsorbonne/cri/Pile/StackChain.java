@@ -1,5 +1,7 @@
 package fr.pantheonsorbonne.cri.Pile;
 
+import java.util.Iterator;
+
 public class StackChain {
     private Node top;
     private int size;
@@ -39,5 +41,10 @@ public class StackChain {
 
     public int size() {
         return size;
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return new StackIterator();
     }
 }
