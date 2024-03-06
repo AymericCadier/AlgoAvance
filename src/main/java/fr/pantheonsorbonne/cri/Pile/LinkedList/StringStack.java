@@ -1,5 +1,5 @@
 package fr.pantheonsorbonne.cri.Pile.LinkedList;
 
-public class StringDeque {
+public class StringStack {
     
 }
