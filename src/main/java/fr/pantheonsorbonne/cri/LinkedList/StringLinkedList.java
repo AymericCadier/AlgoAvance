@@ -257,15 +257,13 @@ public class StringLinkedList {
 
     public static void main(String[] args) {
         StringLinkedList set = new StringLinkedList();
-        for (long i=0; i<5000; i++) {
-            set.add("salut" + i);
+        for (long i=0; i<20000; i++) {
+            set.add("i");
         }
         long startTime = System.nanoTime();
-        for (long i = 0; i < 5000; i++) {
-            set.Contains("salut" + i);
-        }
+        set.Contains("20000");
         long endTime = System.nanoTime();
-        double duration = (endTime - startTime)/1000000d;
+        double duration = (endTime - startTime)/1000d;
         System.out.println("Temps d'exécution de la méthode : " + duration + " microsecondes");
     }
 }
