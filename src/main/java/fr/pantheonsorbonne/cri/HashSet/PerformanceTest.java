@@ -16,14 +16,14 @@ public class PerformanceTest {
         // System.out.println("Temps pris pour ajouter " + numberOfElements + " éléments: " + durationAdd + " ns");
 
         // Testing contains operation
-        for (long i=0; i<1000; i++) {
+        for (long i=0; i<100000; i++) {
             set.add("salut" + i);
         }
         long totalDurationContains = 0;
         
-        for (int i = 0; i < 1000; i++) {   
+        for (int i = 0; i < 100000; i++) {   
             long startTime = System.nanoTime();
-            for (long j = 0; j < 1000; j++) {
+            for (long j = 0; j < 100000; j++) {
                 set.contains("salut" + j);
             }
            long endTime = System.nanoTime();
