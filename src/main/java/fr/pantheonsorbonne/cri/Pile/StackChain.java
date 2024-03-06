@@ -1,8 +1,9 @@
 package fr.pantheonsorbonne.cri.Pile;
 
 import java.util.Iterator;
+import fr.pantheonsorbonne.cri.Pile.StackChainIterator;
 
-public class StackChain {
+public class StackChain implements Iterable<Integer>{
     private Node top;
     private int size;
 
@@ -27,24 +28,10 @@ public class StackChain {
         size--;
         return data;
     }
+        // Existing code...
 
-    public int peek() {
-        if (top == null) {
-            return -1;
+        @Override
+        public Iterator<Integer> iterator() {
+            return new StackChainIterator();
         }
-        return top.data;
-    }
-
-    public boolean isEmpty() {
-        return top == null;
-    }
-
-    public int size() {
-        return size;
-    }
-
-    @Override
-    public Iterator<Integer> iterator() {
-        return new StackIterator();
-    }
 }
