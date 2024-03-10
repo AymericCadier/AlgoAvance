@@ -1,7 +1,9 @@
 package fr.pantheonsorbonne.cri.ArrayList;
 
 import java.util.Iterator;
+import java.util.Random;
 
+import fr.pantheonsorbonne.cri.HashSet.StringHashSet;
 import fr.pantheonsorbonne.cri.LinkedList.StringLinkedList;
 
 public class ArrayList {
@@ -134,18 +136,18 @@ public class ArrayList {
     }
 
     public static void main(String[] args) {
-
         ArrayList set = new ArrayList();
-        for (long i=0; i<1002; i++) {
-            set.add("salut" + i);
+        long duration = 0;
+        for (long i=0; i< 10000; i++){
+            int j = new Random().nextInt(0, 10000);
+            long startTime = System.nanoTime();
+            set.add("?"+j);
+            long endTime = System.nanoTime();
+            duration += (endTime - startTime);
         }
-        long startTime = System.nanoTime();
-        for (long i = 0; i < 1000; i++) {
-            set.contains("salut" + i);
-        }
-        long endTime = System.nanoTime();
-        double duration = (endTime - startTime)/1000;
-        System.out.println("Temps d'exécution de la méthode : " + duration + " microsecondes");
+        double totalduration = duration/10000d;
+        System.out.println(set.size());
+        System.out.println("Temps d'exécution de la méthode : " + totalduration + " nanosecondes");
     
 
         // ArrayList alist = new ArrayList();

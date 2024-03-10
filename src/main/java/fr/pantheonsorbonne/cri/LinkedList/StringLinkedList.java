@@ -1,6 +1,7 @@
 package fr.pantheonsorbonne.cri.LinkedList;
 
 import java.util.Iterator;
+import java.util.Random;
 
 import fr.pantheonsorbonne.cri.HashSet.StringHashSet;
 
@@ -257,13 +258,16 @@ public class StringLinkedList {
 
     public static void main(String[] args) {
         StringLinkedList set = new StringLinkedList();
-        for (long i=0; i<20000; i++) {
-            set.add("i");
+        long duration = 0;
+        for (long i=0; i< 20000; i++){
+            int j = new Random().nextInt(0, 20000);
+            long startTime = System.nanoTime();
+            set.add("?"+j);
+            long endTime = System.nanoTime();
+            duration += (endTime - startTime);
         }
-        long startTime = System.nanoTime();
-        set.Contains("20000");
-        long endTime = System.nanoTime();
-        double duration = (endTime - startTime)/1000d;
-        System.out.println("Temps d'exécution de la méthode : " + duration + " microsecondes");
+        double totalduration = duration/20000d;
+        System.out.println(set.size());
+        System.out.println("Temps d'exécution de la méthode : " + totalduration + " nanosecondes");
     }
 }

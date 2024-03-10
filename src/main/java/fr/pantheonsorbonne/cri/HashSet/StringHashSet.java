@@ -2,10 +2,11 @@ package fr.pantheonsorbonne.cri.HashSet;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 public class StringHashSet {
     LinkedList<Couple>[] data;
-    public int size = 0;
+    public static int size = 0;
     static final float t = 0.7f;
 
     public StringHashSet() {
@@ -75,18 +76,23 @@ public class StringHashSet {
         }
     }
 
+    public static int size() {
+        return size;
+    }
+
     public static void main(String[] args) {
         StringHashSet set = new StringHashSet();
-        for (long i=0; i< 5000000; i++) {
-            set.add("salut" + i);
+        long duration = 0;
+        for (long i=0; i< 10000; i++){
+            int j = new Random().nextInt(0, 10000);
+            long startTime = System.nanoTime();
+            set.add("?"+j);
+            long endTime = System.nanoTime();
+            duration += (endTime - startTime);
         }
-        long startTime = System.nanoTime();
-        for (long i = 0; i < 5000000; i++) {
-            set.contains("salut" + i);
-        }
-        long endTime = System.nanoTime();
-        long duration = (endTime - startTime)/1000;
-        System.out.println("Temps d'exécution de la méthode : " + duration + " microsecondes");
+        double totalduration = duration/10000d;
+        System.out.println(size());
+        System.out.println("Temps d'exécution de la méthode : " + totalduration + " nanosecondes");
 
         
 
