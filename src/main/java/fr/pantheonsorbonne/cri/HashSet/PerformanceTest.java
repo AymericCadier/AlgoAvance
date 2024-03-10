@@ -1,46 +1,35 @@
 package fr.pantheonsorbonne.cri.HashSet;
 
+import java.util.Random;
+
 public class PerformanceTest {
 
     public static void main(String[] args) {
-        StringHashSet set = new StringHashSet();
-        final int numberOfElements = 1000; // Ajustez pour différents volumes
+        // Création d'une instance de la classe StringHashSet
+        StringHashSet list = new StringHashSet();
 
-        // Testing add operation
-        // long startTime = System.nanoTime();
-        // for (int i = 0; i < numberOfElements; i++) {
-        //     set.add("Element " + i);
-        // }
-        // long endTime = System.nanoTime();
-        // long durationAdd = endTime - startTime;
-        // System.out.println("Temps pris pour ajouter " + numberOfElements + " éléments: " + durationAdd + " ns");
+        // Tailles de données à tester
+        int[] sizes = { 100, 1000, 5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000, 45000, 50000,
+                55000, 60000, 65000, 70000, 75000, 80000, 85000, 90000, 95000, 100000 };
 
-        // Testing contains operation
-        for (long i=0; i<100000; i++) {
-            set.add("salut" + i);
-        }
-        long totalDurationContains = 0;
-        
-        for (int i = 0; i < 100000; i++) {   
-            long startTime = System.nanoTime();
-            for (long j = 0; j < 100000; j++) {
-                set.contains("salut" + j);
+        // Mesure et affichage des temps d'exécution pour chaque taille de données
+        for (int size : sizes) {
+
+            long duration = 0;
+
+            // Ajout d'éléments à la liste
+            for (long i = 0; i < size; i++) {
+                int j = new Random().nextInt(0, size);
+                long startTime = System.nanoTime();
+                list.add("Element" + j);
+                long endTime = System.nanoTime();
+                duration += (endTime - startTime);
             }
-           long endTime = System.nanoTime();
-            totalDurationContains += (endTime - startTime)/1000;
-        }
-        double averageDurationContains = (double) totalDurationContains / 1000.0;
-        System.out.println("Temps pris pour vérifier un élément existant (moyenne sur 1000 exécutions): " + averageDurationContains + " microsecondes");
 
-        // Testing remove operation
-        // long totalDurationRemove = 0;
-        // for (int i = 0; i < 1000; i++) {
-        //     startTime = System.nanoTime();
-        //     set.remove("Element 5000"); // Suppression de l'élément 5000 à titre d'exemple
-        //     endTime = System.nanoTime();
-        //     totalDurationRemove += (endTime - startTime);
-        // }
-        // double averageDurationRemove = (double) totalDurationRemove / 1000.0;
-        // System.out.println("Temps pris pour supprimer un élément (moyenne sur 1000 exécutions): " + averageDurationRemove + " ns");
+            // Moyenne du temps d'exécution
+            duration /= size;
+
+            System.out.println("Temps d'exécution pour " + size + " éléments : " + duration + " nanosecondes");
+        }
     }
 }

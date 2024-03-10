@@ -80,7 +80,7 @@ public class StringLinkedList {
     }
 
 
-    public boolean Contains(Object o){
+    public boolean contains(Object o){
         Noeud courant = this.debut;
         while (courant != null) {
             if (courant.getData().equals(o)) {

@@ -1,10 +1,11 @@
-package fr.pantheonsorbonne.cri.ArrayList;
+package fr.pantheonsorbonne.cri.TreeSet;
+
+import java.util.Random;
 
 public class PerformanceTest {
-
     public static void main(String[] args) {
-        // Création d'une instance de la classe StringArrayList
-        ArrayList list = new ArrayList();
+        // Création d'une instance de la classe StringTreeSet
+        StringTreeSet list = new StringTreeSet();
 
         // Tailles de données à tester
         int[] sizes = { 100, 1000, 5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000, 45000, 50000,
@@ -17,8 +18,9 @@ public class PerformanceTest {
 
             // Ajout d'éléments à la liste
             for (long i = 0; i < size; i++) {
+                int j = new Random().nextInt(0, size);
                 long startTime = System.nanoTime();
-                list.add("Element" + i);
+                list.add("Element" + j);
                 long endTime = System.nanoTime();
                 duration += (endTime - startTime);
             }

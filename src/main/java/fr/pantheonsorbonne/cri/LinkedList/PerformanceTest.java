@@ -3,31 +3,30 @@ package fr.pantheonsorbonne.cri.LinkedList;
 public class PerformanceTest {
 
     public static void main(String[] args) {
-        StringLinkedList myList = new StringLinkedList();
-        int[] levels = {100, 500, 750, 1000, 1250, 1500, 1750, 2000, 3000, 4000, 5000, 10000, 20000, 50000}; // Different levels to test
+        // Création d'une instance de la classe StringLinkedList
+        StringLinkedList list = new StringLinkedList();
 
-        for (int level : levels) {
-            // Reset the list for each level
-            myList.clear();
+        // Tailles de données à tester
+        int[] sizes = { 100, 1000, 5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000, 45000, 50000,
+                55000, 60000, 65000, 70000, 75000, 80000, 85000, 90000, 95000, 100000 };
 
-            // Add elements
-            long startAddTime = System.nanoTime();
-            for (int i = 0; i < level; i++) {
-                myList.add("Element " + i);
+        // Mesure et affichage des temps d'exécution pour chaque taille de données
+        for (int size : sizes) {
+
+            long duration = 0;
+
+            // Ajout d'éléments à la liste
+            for (long i = 0; i < size; i++) {
+                long startTime = System.nanoTime();
+                list.add("Element" + i);
+                long endTime = System.nanoTime();
+                duration += (endTime - startTime) / 1000;
             }
-            long endAddTime = System.nanoTime();
-            long durationAdd = (endAddTime - startAddTime) / 1000; // Convert to microseconds
-            System.out.println("Time taken to add " + level + " elements: " + durationAdd + " µs");
+            
+            // Moyenne du temps d'exécution
+            duration /= size;
 
-            // For searching, use the last element added, ensuring we're testing the worst-case scenario
-            // This is the last element's "name" or value
-            String searchFor = "Element " + (level - 1); // Adjusted to always search for the last element
-
-            long startContainsTime = System.nanoTime();
-            boolean contains = myList.Contains(searchFor);
-            long endContainsTime = System.nanoTime();
-            long durationContains = (endContainsTime - startContainsTime) / 1000; // Convert to microseconds
-            System.out.println("Time taken to search the last element (" + searchFor + "): " + durationContains + " µs, Found: " + contains);
+            System.out.println("Temps d'exécution pour " + size + " éléments : " + duration + " microsecondes");
         }
     }
 }
