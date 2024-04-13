@@ -40,10 +40,8 @@ public class PriorityQueue implements Iterable<String>{
             throw new RuntimeException("La file d'attente est vide");
         }
         int res = data[0];
-        flag--;
-        if (flag > 0) {
-            data[0] = data[flag];
-        }
+        data[0] = data[--flag];
+        data[flag] = 0;
         return res;
     }
 

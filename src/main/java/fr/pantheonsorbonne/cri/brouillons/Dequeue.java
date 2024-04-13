@@ -4,7 +4,7 @@ public class Dequeue implements Iterable<String>{
     private int flag;
     private String[] data;
 
-    public void Deque() {
+    public Dequeue() {
         this.data = new String[1];
         this.flag = 0;
     }

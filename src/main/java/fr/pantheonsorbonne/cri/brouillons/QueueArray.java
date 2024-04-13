@@ -2,12 +2,12 @@ package fr.pantheonsorbonne.cri.brouillons;
 
 import java.util.Iterator;
 
-public class Queue implements Iterable<String> {
+public class QueueArray implements Iterable<String> {
 
     private int flag;
     private String[] data;
 
-    public void Queue() {
+    public QueueArray() {
         this.data = new String[1];
         this.flag = 0;
     }
@@ -27,7 +27,7 @@ public class Queue implements Iterable<String> {
     // retire et renvoie l'élément en tête de la file d'attente
     public String remove() {
         if (flag == 0) {
-            return "erreur";
+            throw new IllegalStateException("La file d'attente est vide");
         }
         String res = data[0];
         for (int i = 1; i < flag; i++) {
@@ -48,7 +48,7 @@ public class Queue implements Iterable<String> {
     // renvoie l'élément en tête de la file d'attente sans le retirer
     public String peek() {
         if (flag == 0) {
-            return "erreur";
+            throw new IllegalStateException("La file d'attente est vide");
         }
         return data[0];
     }
@@ -67,11 +67,39 @@ public class Queue implements Iterable<String> {
         return sb.toString();
     }
 
-
     @Override
     public Iterator<String> iterator() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'iterator'");
+        return new Iterator<String>() {
+            private int currentIndex = 0;
+
+            @Override
+            public boolean hasNext() {
+                return currentIndex < flag;
+            }
+
+            @Override
+            public String next() {
+                if (!hasNext()) {
+                    throw new IllegalStateException("Plus d'éléments dans la file d'attente");
+                }
+                return data[currentIndex++];
+            }
+        };
     }
-    
+
+    public static void main(String[] args) {
+        QueueArray q = new QueueArray();
+        q.offer("a");
+        q.offer("b");
+        q.offer("c");
+        System.out.println(q);
+        System.out.println(q.remove());
+        System.out.println(q);
+        System.out.println(q.peek());
+        System.out.println(q);
+
+        for (String s : q) {
+            System.out.println(s);
+        }
+    }
 }

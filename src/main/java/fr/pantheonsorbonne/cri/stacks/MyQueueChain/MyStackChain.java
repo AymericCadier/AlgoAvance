@@ -2,7 +2,7 @@ package fr.pantheonsorbonne.cri.MyQueueChain;
 
 import java.util.Iterator;
 
-public class MyQueueChain implements Iterable<String>{
+public class MyStackChain implements Iterable<String>{
 
     Couche currentTop;
 
